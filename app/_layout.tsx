@@ -7,10 +7,6 @@ export default function RootLayout() {
   return (
     <AuthProvider
       supabaseClient={supabase}
-      routes={{
-        login: '/(auth)/login',
-        afterLogin: '/(tabs)/home',
-      }}
     >
       <StatusBar style="light" />
       <Stack
