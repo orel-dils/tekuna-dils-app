@@ -14,6 +14,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing } from '@/constants/theme';
 import { GoldButton } from '@/components/gold-button';
 import { GoldInput } from '@/components/gold-input';
+import { TekunaLogo } from '@/components/tekuna-logo';
 
 export default function LoginScreen() {
   const insets = useSafeAreaInsets();
@@ -84,30 +85,8 @@ export default function LoginScreen() {
           }}
         >
           {/* Logo */}
-          <View style={{ alignItems: 'center', gap: Spacing.sm }}>
-            <Text
-              style={{
-                fontSize: 38,
-                fontWeight: '800',
-                color: Colors.gold,
-                letterSpacing: 5,
-                textShadowColor: Colors.goldGlow,
-                textShadowOffset: { width: 0, height: 0 },
-                textShadowRadius: 20,
-              }}
-            >
-              TEKUNA
-            </Text>
-            <Text
-              style={{
-                fontSize: 18,
-                color: Colors.white,
-                fontWeight: '600',
-                letterSpacing: 2,
-              }}
-            >
-              DILS
-            </Text>
+          <View style={{ alignItems: 'center' }}>
+            <TekunaLogo width={240} />
           </View>
 
           {/* Form */}

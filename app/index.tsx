@@ -4,38 +4,40 @@ import { useRouter } from 'expo-router';
 import { useAuth } from '@fastshot/auth';
 import { Colors } from '@/constants/theme';
 import { StarOfDavid } from '@/components/star-of-david';
+import { TekunaLogo } from '@/components/tekuna-logo';
 
 export default function SplashScreen() {
   const router = useRouter();
   const { isAuthenticated, isLoading } = useAuth();
-  const titleOpacity = useRef(new Animated.Value(0)).current;
-  const titleTranslateY = useRef(new Animated.Value(20)).current;
+  const logoOpacity = useRef(new Animated.Value(0)).current;
+  const logoScale = useRef(new Animated.Value(0.85)).current;
   const subtitleOpacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // Staggered text reveal
+    // Staggered reveal: star spins in, then logo fades up, then subtitle
     Animated.sequence([
       Animated.delay(600),
       Animated.parallel([
-        Animated.timing(titleOpacity, {
+        Animated.timing(logoOpacity, {
           toValue: 1,
-          duration: 800,
+          duration: 900,
           useNativeDriver: true,
         }),
-        Animated.timing(titleTranslateY, {
-          toValue: 0,
-          duration: 800,
-          easing: Easing.out(Easing.back(1.2)),
+        Animated.spring(logoScale, {
+          toValue: 1,
+          tension: 40,
+          friction: 7,
           useNativeDriver: true,
         }),
       ]),
       Animated.timing(subtitleOpacity, {
         toValue: 1,
         duration: 600,
+        easing: Easing.out(Easing.ease),
         useNativeDriver: true,
       }),
     ]).start();
-  }, [titleOpacity, titleTranslateY, subtitleOpacity]);
+  }, [logoOpacity, logoScale, subtitleOpacity]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -58,41 +60,34 @@ export default function SplashScreen() {
         backgroundColor: Colors.background,
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 32,
+        gap: 28,
       }}
     >
-      <StarOfDavid size={180} />
+      <StarOfDavid size={160} />
 
-      <View style={{ alignItems: 'center', gap: 12 }}>
-        <Animated.Text
-          style={{
-            fontSize: 42,
-            fontWeight: '800',
-            color: Colors.gold,
-            letterSpacing: 6,
-            opacity: titleOpacity,
-            transform: [{ translateY: titleTranslateY }],
-            textShadowColor: Colors.goldGlow,
-            textShadowOffset: { width: 0, height: 0 },
-            textShadowRadius: 20,
-          }}
-        >
-          TEKUNA
-        </Animated.Text>
+      <Animated.View
+        style={{
+          alignItems: 'center',
+          gap: 14,
+          opacity: logoOpacity,
+          transform: [{ scale: logoScale }],
+        }}
+      >
+        <TekunaLogo width={280} />
+      </Animated.View>
 
-        <Animated.Text
-          style={{
-            fontSize: 16,
-            color: Colors.white,
-            opacity: subtitleOpacity,
-            writingDirection: 'rtl',
-            textAlign: 'center',
-            letterSpacing: 1,
-          }}
-        >
-          DILS {'\u2014'} {'\u05D4\u05E9\u05E7\u05DC \u05D4\u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05E9\u05DC \u05D9\u05E9\u05E8\u05D0\u05DC'}
-        </Animated.Text>
-      </View>
+      <Animated.Text
+        style={{
+          fontSize: 14,
+          color: Colors.textSecondary,
+          opacity: subtitleOpacity,
+          writingDirection: 'rtl',
+          textAlign: 'center',
+          letterSpacing: 0.5,
+        }}
+      >
+        {'\u05D4\u05E9\u05E7\u05DC \u05D4\u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9 \u05E9\u05DC \u05D9\u05E9\u05E8\u05D0\u05DC'}
+      </Animated.Text>
     </View>
   );
 }
