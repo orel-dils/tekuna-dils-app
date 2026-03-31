@@ -15,7 +15,7 @@ import { GoldButton } from '@/components/gold-button';
 export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const { wallet, loading: walletLoading, error: walletError, refetch: refetchWallet } = useWallet();
   const { transactions, loading: txLoading, refetch: refetchTx } = useTransactions(wallet?.address);
   const [refreshing, setRefreshing] = useState(false);
@@ -93,7 +93,7 @@ export default function HomeScreen() {
           {'\u05E9\u05DC\u05D5\u05DD, '}{displayName}
         </Text>
         <Pressable
-          onPress={signOut}
+          onPress={() => router.replace('/(auth)/login' as any)}
           hitSlop={12}
           style={{
             width: 36,

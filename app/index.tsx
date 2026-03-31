@@ -1,14 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { View, Animated, Easing } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useAuth } from '@fastshot/auth';
 import { Colors } from '@/constants/theme';
 import { StarOfDavid } from '@/components/star-of-david';
 import { TekunaLogo } from '@/components/tekuna-logo';
 
 export default function SplashScreen() {
   const router = useRouter();
-  const { isAuthenticated, isLoading } = useAuth();
   const logoOpacity = useRef(new Animated.Value(0)).current;
   const logoScale = useRef(new Animated.Value(0.85)).current;
   const subtitleOpacity = useRef(new Animated.Value(0)).current;
@@ -40,18 +38,13 @@ export default function SplashScreen() {
   }, [logoOpacity, logoScale, subtitleOpacity]);
 
   useEffect(() => {
-    if (isLoading) return;
-
+    // Dev mode: always navigate to home after splash animation
     const timer = setTimeout(() => {
-      if (isAuthenticated) {
-        router.replace('/(tabs)/home' as any);
-      } else {
-        router.replace('/(auth)/login' as any);
-      }
+      router.replace('/(tabs)/home' as any);
     }, 2500);
 
     return () => clearTimeout(timer);
-  }, [isAuthenticated, isLoading, router]);
+  }, [router]);
 
   return (
     <View

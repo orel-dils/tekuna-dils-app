@@ -9,7 +9,7 @@ import {
   Alert,
   Pressable,
 } from 'react-native';
-import { useAuth } from '@fastshot/auth';
+import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing } from '@/constants/theme';
 import { GoldButton } from '@/components/gold-button';
@@ -18,9 +18,10 @@ import { TekunaLogo } from '@/components/tekuna-logo';
 
 export default function LoginScreen() {
   const insets = useSafeAreaInsets();
-  const { signInWithEmail, isLoading, error, clearError } = useAuth();
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [localError, setLocalError] = useState('');
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -43,7 +44,6 @@ export default function LoginScreen() {
   }, [fadeAnim, slideAnim]);
 
   const handleLogin = async () => {
-    clearError();
     setLocalError('');
 
     if (!email.trim()) {
@@ -55,14 +55,15 @@ export default function LoginScreen() {
       return;
     }
 
-    try {
-      await signInWithEmail(email.trim(), password);
-    } catch (err: any) {
-      setLocalError(err.message || '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D4\u05EA\u05D7\u05D1\u05E8\u05D5\u05EA');
-    }
+    // Dev mode: accept any credentials and navigate to home
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      router.replace('/(tabs)/home' as any);
+    }, 500);
   };
 
-  const displayError = localError || error?.message;
+  const displayError = localError;
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
