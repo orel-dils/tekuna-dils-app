@@ -1,35 +1,37 @@
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { useFonts } from "expo-font";
-import { FontMap } from "@/constants/Typography";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-
-SplashScreen.preventAutoHideAsync();
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { AuthProvider } from '@fastshot/auth';
+import { supabase } from '@/lib/supabase';
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts(FontMap);
-
-  useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded, error]);
-
-  if (!loaded && !error) {
-    return null;
-  }
-
   return (
-    <>
-      <StatusBar style="dark" />
+    <AuthProvider
+      supabaseClient={supabase}
+      routes={{
+        login: '/(auth)/login',
+        afterLogin: '/(tabs)/home',
+      }}
+    >
+      <StatusBar style="light" />
       <Stack
         screenOptions={{
           headerShown: false,
+          contentStyle: { backgroundColor: '#000000' },
+          animation: 'fade',
         }}
       >
         <Stack.Screen name="index" />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen
+          name="transaction/[id]"
+          options={{
+            headerShown: false,
+            animation: 'slide_from_bottom',
+            presentation: 'card',
+          }}
+        />
       </Stack>
-    </>
+    </AuthProvider>
   );
 }
