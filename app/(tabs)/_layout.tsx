@@ -6,9 +6,10 @@ import { Colors } from '@/constants/theme';
 function TabIcon({ name, focused }: { name: string; focused: boolean }) {
   const icons: Record<string, string> = {
     home: '\u{1F3E0}',
+    pay: '\uD83D\uDCB3',
     send: '\u2191',
-    receive: '\u2193',
-    history: '\u{1F4CB}',
+    history: '\uD83D\uDCCB',
+    clubs: '\uD83C\uDFC6',
   };
   return (
     <View
@@ -21,7 +22,7 @@ function TabIcon({ name, focused }: { name: string; focused: boolean }) {
     >
       <Text
         style={{
-          fontSize: name === 'send' || name === 'receive' ? 20 : 18,
+          fontSize: name === 'send' ? 20 : 18,
           color: focused ? Colors.gold : Colors.textTertiary,
           fontWeight: focused ? '800' : '400',
         }}
@@ -63,17 +64,17 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
+        name="pay"
+        options={{
+          title: '\u05E9\u05DC\u05DD',
+          tabBarIcon: ({ focused }) => <TabIcon name="pay" focused={focused} />,
+        }}
+      />
+      <Tabs.Screen
         name="send"
         options={{
           title: '\u05E9\u05DC\u05D7',
           tabBarIcon: ({ focused }) => <TabIcon name="send" focused={focused} />,
-        }}
-      />
-      <Tabs.Screen
-        name="receive"
-        options={{
-          title: '\u05E7\u05D1\u05DC',
-          tabBarIcon: ({ focused }) => <TabIcon name="receive" focused={focused} />,
         }}
       />
       <Tabs.Screen
@@ -83,6 +84,22 @@ export default function TabsLayout() {
           tabBarIcon: ({ focused }) => (
             <TabIcon name="history" focused={focused} />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="clubs"
+        options={{
+          title: '\u05DE\u05D5\u05E2\u05D3\u05D5\u05E0\u05D9\u05DD',
+          tabBarIcon: ({ focused }) => (
+            <TabIcon name="clubs" focused={focused} />
+          ),
+        }}
+      />
+      {/* Hide receive from tab bar — accessible via home buttons */}
+      <Tabs.Screen
+        name="receive"
+        options={{
+          href: null,
         }}
       />
     </Tabs>

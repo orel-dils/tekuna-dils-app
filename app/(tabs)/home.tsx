@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { View, Text, ScrollView, Animated, Easing, RefreshControl, Pressable } from 'react-native';
+import { View, Text, ScrollView, Animated, Easing, RefreshControl, Pressable, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '@fastshot/auth';
 import { Colors, Spacing, Radius } from '@/constants/theme';
+import { supabase } from '@/lib/supabase';
 import { useWallet } from '@/hooks/use-wallet';
 import { useTransactions } from '@/hooks/use-transactions';
 import { formatBalance, truncateAddress } from '@/lib/format';
@@ -93,7 +94,23 @@ export default function HomeScreen() {
           {'\u05E9\u05DC\u05D5\u05DD, '}{displayName}
         </Text>
         <Pressable
-          onPress={() => router.replace('/(auth)/login' as any)}
+          onPress={() => {
+            Alert.alert(
+              '\u05D4\u05EA\u05E0\u05EA\u05E7\u05D5\u05EA',
+              '\u05D4\u05D0\u05DD \u05D0\u05EA\u05D4 \u05D1\u05D8\u05D5\u05D7 \u05E9\u05D1\u05E8\u05E6\u05D5\u05E0\u05DA \u05DC\u05D4\u05EA\u05E0\u05EA\u05E7?',
+              [
+                { text: '\u05D1\u05D9\u05D8\u05D5\u05DC', style: 'cancel' },
+                {
+                  text: '\u05D4\u05EA\u05E0\u05EA\u05E7',
+                  style: 'destructive',
+                  onPress: async () => {
+                    await supabase.auth.signOut();
+                    // Auth guard in _layout.tsx handles redirect
+                  },
+                },
+              ]
+            );
+          }}
           hitSlop={12}
           style={{
             width: 36,
@@ -104,7 +121,7 @@ export default function HomeScreen() {
             justifyContent: 'center',
           }}
         >
-          <Text style={{ fontSize: 16 }}>{'\u2699\uFE0F'}</Text>
+          <Text style={{ fontSize: 16 }}>{'\u{1F6AA}'}</Text>
         </Pressable>
       </Animated.View>
 

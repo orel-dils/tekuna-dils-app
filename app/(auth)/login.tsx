@@ -6,12 +6,12 @@ import {
   KeyboardAvoidingView,
   Animated,
   Easing,
-  Alert,
   Pressable,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing } from '@/constants/theme';
+import { supabase } from '@/lib/supabase';
 import { GoldButton } from '@/components/gold-button';
 import { GoldInput } from '@/components/gold-input';
 import { TekunaLogo } from '@/components/tekuna-logo';
@@ -46,24 +46,32 @@ export default function LoginScreen() {
   const handleLogin = async () => {
     setLocalError('');
 
-    if (!email.trim()) {
-      setLocalError('\u05E0\u05D0 \u05DC\u05D4\u05D6\u05D9\u05DF \u05DB\u05EA\u05D5\u05D1\u05EA \u05D3\u05D5\u05D0\u05F4\u05DC');
-      return;
-    }
-    if (!password) {
-      setLocalError('\u05E0\u05D0 \u05DC\u05D4\u05D6\u05D9\u05DF \u05E1\u05D9\u05E1\u05DE\u05D4');
+    if (!email.trim() || !password) {
+      setLocalError('\u05E0\u05D0 \u05DC\u05DE\u05DC\u05D0 \u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D5\u05E1\u05D9\u05E1\u05DE\u05D0');
       return;
     }
 
-    // Dev mode: accept any credentials and navigate to home
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      router.replace('/(tabs)/home' as any);
-    }, 500);
-  };
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password,
+      });
 
-  const displayError = localError;
+      if (error) {
+        if (error.message.includes('Invalid login')) {
+          setLocalError('\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D0\u05D5 \u05E1\u05D9\u05E1\u05DE\u05D0 \u05E9\u05D2\u05D5\u05D9\u05D9\u05DD');
+        } else {
+          setLocalError(error.message);
+        }
+      }
+      // Navigation handled by auth state listener in _layout.tsx
+    } catch (err: any) {
+      setLocalError(err.message || '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D4\u05EA\u05D7\u05D1\u05E8\u05D5\u05EA');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
@@ -117,7 +125,7 @@ export default function LoginScreen() {
               textContentType="password"
             />
 
-            {displayError && (
+            {localError ? (
               <Text
                 selectable
                 style={{
@@ -127,9 +135,9 @@ export default function LoginScreen() {
                   writingDirection: 'rtl',
                 }}
               >
-                {displayError}
+                {localError}
               </Text>
-            )}
+            ) : null}
 
             <GoldButton
               title={'\u05D4\u05EA\u05D7\u05D1\u05E8'}
@@ -138,12 +146,7 @@ export default function LoginScreen() {
             />
 
             <Pressable
-              onPress={() => {
-                Alert.alert(
-                  '\u05E9\u05DB\u05D7\u05EA \u05E1\u05D9\u05E1\u05DE\u05D4',
-                  '\u05E4\u05D5\u05E0\u05E7\u05E6\u05D9\u05D4 \u05D6\u05D5 \u05EA\u05D4\u05D9\u05D4 \u05D6\u05DE\u05D9\u05E0\u05D4 \u05D1\u05E7\u05E8\u05D5\u05D1'
-                );
-              }}
+              onPress={() => router.push('/(auth)/signup' as any)}
               hitSlop={12}
             >
               <Text
@@ -154,7 +157,7 @@ export default function LoginScreen() {
                   writingDirection: 'rtl',
                 }}
               >
-                {'\u05E9\u05DB\u05D7\u05EA \u05E1\u05D9\u05E1\u05DE\u05D4?'}
+                {'\u05D0\u05D9\u05DF \u05DC\u05DA \u05D7\u05E9\u05D1\u05D5\u05DF? \u05D4\u05D9\u05E8\u05E9\u05DD \u05E2\u05DB\u05E9\u05D9\u05D5'}
               </Text>
             </Pressable>
           </View>
