@@ -5,12 +5,15 @@ import {
   ScrollView,
   Pressable,
   Animated,
+  Share,
 } from 'react-native';
+import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Radius } from '@/constants/theme';
 import { supabase } from '@/lib/supabase';
 import { useWallet } from '@/hooks/use-wallet';
-import { formatBalance } from '@/lib/format';
+import { formatBalance, formatDateTime } from '@/lib/format';
+import { Transaction } from '@/hooks/use-transactions';
 import { LoadingScreen } from '@/components/loading-screen';
 import { ErrorState } from '@/components/error-state';
 import { GoldButton } from '@/components/gold-button';
@@ -21,6 +24,7 @@ const KEYPAD_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'del
 const PIN_EXPIRY_SECONDS = 180;
 
 export default function PayScreen() {
+  const router = useRouter();
   const insets = useSafeAreaInsets();
   const { wallet, loading: walletLoading, error: walletError, refetch } = useWallet();
   const [step, setStep] = useState<Step>('amount');
@@ -30,10 +34,13 @@ export default function PayScreen() {
   const [secondsLeft, setSecondsLeft] = useState(PIN_EXPIRY_SECONDS);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState('');
+  const [receivedTxn, setReceivedTxn] = useState<Transaction | null>(null);
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const pinScale = useRef(new Animated.Value(0.8)).current;
   const successScale = useRef(new Animated.Value(0)).current;
+  const checkmarkRotate = useRef(new Animated.Value(0)).current;
+  const successFade = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -78,30 +85,56 @@ export default function PayScreen() {
     }
   }, [step, pinScale]);
 
-  // Realtime listener for payment confirmation
+  // Animate success screen
+  useEffect(() => {
+    if (step === 'success') {
+      successScale.setValue(0);
+      checkmarkRotate.setValue(0);
+      successFade.setValue(0);
+
+      Animated.sequence([
+        Animated.spring(successScale, {
+          toValue: 1,
+          tension: 40,
+          friction: 6,
+          useNativeDriver: true,
+        }),
+        Animated.parallel([
+          Animated.timing(checkmarkRotate, {
+            toValue: 1,
+            duration: 600,
+            useNativeDriver: true,
+          }),
+          Animated.timing(successFade, {
+            toValue: 1,
+            duration: 500,
+            useNativeDriver: true,
+          }),
+        ]),
+      ]).start();
+    }
+  }, [step, successScale, checkmarkRotate, successFade]);
+
+  // Realtime listener for payment confirmation — filtered by wallet address
   useEffect(() => {
     if (step !== 'pin' || !wallet) return;
 
+    const numAmount = parseFloat(amount);
     const channel = supabase
-      .channel('pay-confirmation')
+      .channel('payment-confirm')
       .on(
         'postgres_changes',
         {
           event: 'INSERT',
           schema: 'public',
           table: 'transactions',
+          filter: `to_address=eq.${wallet.address}`,
         },
         (payload) => {
-          const tx = payload.new as any;
-          if (tx.to_address === wallet.address) {
+          const tx = payload.new as Transaction;
+          if (tx.amount >= numAmount) {
+            setReceivedTxn(tx);
             setStep('success');
-            successScale.setValue(0);
-            Animated.spring(successScale, {
-              toValue: 1,
-              tension: 40,
-              friction: 6,
-              useNativeDriver: true,
-            }).start();
             refetch();
           }
         }
@@ -111,7 +144,7 @@ export default function PayScreen() {
     return () => {
       channel.unsubscribe();
     };
-  }, [step, wallet, successScale, refetch]);
+  }, [step, wallet, amount, refetch]);
 
   const handleKeyPress = useCallback((key: string) => {
     setError('');
@@ -191,6 +224,30 @@ export default function PayScreen() {
     setPin('');
     setExpiresAt('');
     setError('');
+    setReceivedTxn(null);
+  };
+
+  const handleShareReceipt = async () => {
+    if (!receivedTxn) return;
+
+    const receiptText = [
+      '\u2705 \u05E7\u05D1\u05DC\u05D4 \u05DE-DILS',
+      '',
+      `\u05E1\u05DB\u05D5\u05DD: \u20AA${formatBalance(receivedTxn.amount)}`,
+      `\u05DE\u05E1\u05E4\u05E8 \u05E2\u05E1\u05E7\u05D4: ${receivedTxn.tx_hash || receivedTxn.id}`,
+      `\u05EA\u05D0\u05E8\u05D9\u05DA: ${formatDateTime(receivedTxn.created_at)}`,
+      `\u05DE\u05D0\u05EA: ${receivedTxn.from_address}`,
+      '',
+      'DILS Payment Network',
+    ].join('\n');
+
+    try {
+      await Share.share({
+        message: receiptText,
+      });
+    } catch {
+      // User cancelled share
+    }
   };
 
   if (walletLoading && !wallet) {
@@ -206,41 +263,63 @@ export default function PayScreen() {
   const seconds = secondsLeft % 60;
   const timerDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
 
+  const checkmarkSpin = checkmarkRotate.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+
   // Success screen
   if (step === 'success') {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: Colors.background,
-          alignItems: 'center',
-          justifyContent: 'center',
+      <ScrollView
+        style={{ flex: 1, backgroundColor: Colors.background }}
+        contentContainerStyle={{
+          paddingTop: insets.top + Spacing.xxxl,
+          paddingBottom: insets.bottom + 100,
           paddingHorizontal: Spacing.xxl,
+          alignItems: 'center',
           gap: Spacing.xxl,
+          flexGrow: 1,
         }}
       >
+        {/* Animated green checkmark */}
         <Animated.View
           style={{
+            marginTop: Spacing.xxxl,
             alignItems: 'center',
-            gap: Spacing.xxl,
+            gap: Spacing.lg,
             transform: [{ scale: successScale }],
           }}
         >
-          <View
+          <Animated.View
             style={{
-              width: 100,
-              height: 100,
-              borderRadius: 50,
-              backgroundColor: 'rgba(52,199,89,0.15)',
+              width: 120,
+              height: 120,
+              borderRadius: 60,
+              backgroundColor: 'rgba(52,199,89,0.12)',
+              borderWidth: 3,
+              borderColor: Colors.success,
               alignItems: 'center',
               justifyContent: 'center',
+              boxShadow: '0 0 50px rgba(52,199,89,0.3)',
+              transform: [{ rotate: checkmarkSpin }],
             }}
           >
-            <Text style={{ fontSize: 48 }}>{'\u2705'}</Text>
-          </View>
+            <Text style={{ fontSize: 56, lineHeight: 64 }}>{'\u2705'}</Text>
+          </Animated.View>
+        </Animated.View>
+
+        {/* Title */}
+        <Animated.View
+          style={{
+            alignItems: 'center',
+            gap: Spacing.md,
+            opacity: successFade,
+          }}
+        >
           <Text
             style={{
-              fontSize: 28,
+              fontSize: 30,
               fontWeight: '800',
               color: Colors.success,
               textAlign: 'center',
@@ -249,23 +328,156 @@ export default function PayScreen() {
           >
             {'\u05D4\u05EA\u05E9\u05DC\u05D5\u05DD \u05D4\u05EA\u05E7\u05D1\u05DC!'}
           </Text>
+
+          {/* Amount */}
           <Text
+            selectable
             style={{
-              fontSize: 36,
-              fontWeight: '800',
+              fontSize: 44,
+              fontWeight: '900',
               color: Colors.white,
               fontVariant: ['tabular-nums'],
+              letterSpacing: -1,
             }}
           >
-            {'\u20AA'}{formatBalance(parseFloat(amount))}
+            {'\u20AA'}{formatBalance(receivedTxn ? receivedTxn.amount : parseFloat(amount))}
           </Text>
         </Animated.View>
-        <GoldButton
-          title={'\u05EA\u05E9\u05DC\u05D5\u05DD \u05D7\u05D3\u05E9'}
-          onPress={handleReset}
-          style={{ marginTop: Spacing.xxl }}
-        />
-      </View>
+
+        {/* Transaction details card */}
+        <Animated.View
+          style={{
+            width: '100%',
+            backgroundColor: Colors.card,
+            borderRadius: Radius.lg,
+            borderCurve: 'continuous',
+            borderWidth: 1,
+            borderColor: Colors.cardBorder,
+            padding: Spacing.xxl,
+            gap: Spacing.lg,
+            opacity: successFade,
+          }}
+        >
+          {/* Transaction ID */}
+          <View style={{ gap: Spacing.xs }}>
+            <Text
+              style={{
+                fontSize: 13,
+                color: Colors.textSecondary,
+                textAlign: 'right',
+                writingDirection: 'rtl',
+              }}
+            >
+              {'\u05DE\u05E1\u05E4\u05E8 \u05E2\u05E1\u05E7\u05D4'}
+            </Text>
+            <Text
+              selectable
+              style={{
+                fontSize: 15,
+                fontWeight: '600',
+                color: Colors.white,
+                textAlign: 'right',
+                fontFamily: 'monospace',
+              }}
+              numberOfLines={1}
+            >
+              {receivedTxn?.tx_hash || receivedTxn?.id || '---'}
+            </Text>
+          </View>
+
+          {/* Divider */}
+          <View
+            style={{
+              height: 1,
+              backgroundColor: Colors.cardBorder,
+            }}
+          />
+
+          {/* From address */}
+          {receivedTxn?.from_address && (
+            <View style={{ gap: Spacing.xs }}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: Colors.textSecondary,
+                  textAlign: 'right',
+                  writingDirection: 'rtl',
+                }}
+              >
+                {'\u05DE\u05D0\u05EA'}
+              </Text>
+              <Text
+                selectable
+                style={{
+                  fontSize: 14,
+                  color: Colors.textSecondary,
+                  textAlign: 'right',
+                  fontFamily: 'monospace',
+                }}
+                numberOfLines={1}
+              >
+                {receivedTxn.from_address}
+              </Text>
+            </View>
+          )}
+
+          {/* Date */}
+          {receivedTxn?.created_at && (
+            <>
+              <View
+                style={{
+                  height: 1,
+                  backgroundColor: Colors.cardBorder,
+                }}
+              />
+              <View style={{ gap: Spacing.xs }}>
+                <Text
+                  style={{
+                    fontSize: 13,
+                    color: Colors.textSecondary,
+                    textAlign: 'right',
+                    writingDirection: 'rtl',
+                  }}
+                >
+                  {'\u05EA\u05D0\u05E8\u05D9\u05DA'}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 15,
+                    fontWeight: '600',
+                    color: Colors.white,
+                    textAlign: 'right',
+                    writingDirection: 'rtl',
+                  }}
+                >
+                  {formatDateTime(receivedTxn.created_at)}
+                </Text>
+              </View>
+            </>
+          )}
+        </Animated.View>
+
+        {/* Action buttons */}
+        <Animated.View
+          style={{
+            width: '100%',
+            gap: Spacing.md,
+            marginTop: Spacing.lg,
+            opacity: successFade,
+          }}
+        >
+          <GoldButton
+            title={'\u05D7\u05D6\u05D5\u05E8 \u05DC\u05D1\u05D9\u05EA'}
+            onPress={() => router.replace('/(tabs)/home' as any)}
+          />
+          <GoldButton
+            title={'\u05E9\u05DC\u05D7 \u05E7\u05D1\u05DC\u05D4'}
+            icon={'\uD83D\uDCE4'}
+            variant="outline"
+            onPress={handleShareReceipt}
+          />
+        </Animated.View>
+      </ScrollView>
     );
   }
 

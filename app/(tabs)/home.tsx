@@ -7,7 +7,7 @@ import { Colors, Spacing, Radius } from '@/constants/theme';
 import { supabase } from '@/lib/supabase';
 import { useWallet } from '@/hooks/use-wallet';
 import { useTransactions } from '@/hooks/use-transactions';
-import { formatBalance, truncateAddress } from '@/lib/format';
+import { truncateAddress } from '@/lib/format';
 import { TransactionItem } from '@/components/transaction-item';
 import { LoadingScreen } from '@/components/loading-screen';
 import { ErrorState } from '@/components/error-state';
@@ -17,7 +17,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { user } = useAuth();
-  const { wallet, loading: walletLoading, error: walletError, refetch: refetchWallet } = useWallet();
+  const { wallet, loading: walletLoading, error: walletError, isConnected, refetch: refetchWallet } = useWallet();
   const { transactions, loading: txLoading, refetch: refetchTx } = useTransactions(wallet?.address);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -140,17 +140,55 @@ export default function HomeScreen() {
           boxShadow: '0 0 30px rgba(197,160,40,0.15)',
         }}
       >
-        <Text
+        {/* Balance label + connection status */}
+        <View
           style={{
-            color: Colors.gold,
-            fontSize: 14,
-            fontWeight: '600',
-            textAlign: 'right',
-            writingDirection: 'rtl',
+            flexDirection: 'row-reverse',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
-          {'\u05D9\u05EA\u05E8\u05EA DILS'}
-        </Text>
+          <Text
+            style={{
+              color: Colors.gold,
+              fontSize: 14,
+              fontWeight: '600',
+              writingDirection: 'rtl',
+            }}
+          >
+            {'\u05D9\u05EA\u05E8\u05D4 \u05D6\u05DE\u05D9\u05E0\u05D4'}
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: Spacing.xs,
+            }}
+          >
+            <View
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: 4,
+                backgroundColor: isConnected ? Colors.success : Colors.error,
+                boxShadow: isConnected
+                  ? '0 0 6px rgba(52,199,89,0.6)'
+                  : '0 0 6px rgba(255,59,48,0.6)',
+              }}
+            />
+            <Text
+              style={{
+                color: isConnected ? Colors.success : Colors.error,
+                fontSize: 11,
+                fontWeight: '600',
+              }}
+            >
+              {isConnected ? '\u05DE\u05D7\u05D5\u05D1\u05E8' : '\u05DC\u05D0 \u05DE\u05E7\u05D5\u05D5\u05DF'}
+            </Text>
+          </View>
+        </View>
+
+        {/* Main balance */}
         <Text
           selectable
           style={{
@@ -162,8 +200,26 @@ export default function HomeScreen() {
             letterSpacing: -1,
           }}
         >
-          {'\u20AA'}{formatBalance(wallet?.balance ?? 0)}
+          {'\u20AA'}{(wallet?.balance ?? 0).toFixed(2)}
         </Text>
+
+        {/* Locked balance */}
+        {wallet && wallet.locked_balance > 0 && (
+          <Text
+            style={{
+              color: Colors.textTertiary,
+              fontSize: 14,
+              fontWeight: '500',
+              textAlign: 'right',
+              writingDirection: 'rtl',
+              fontVariant: ['tabular-nums'],
+            }}
+          >
+            {'\u05DE\u05D5\u05E7\u05E4\u05D0: \u20AA'}{wallet.locked_balance.toFixed(2)}
+          </Text>
+        )}
+
+        {/* Wallet address */}
         <View
           style={{
             flexDirection: 'row-reverse',
@@ -171,14 +227,6 @@ export default function HomeScreen() {
             gap: Spacing.xs,
           }}
         >
-          <View
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: 4,
-              backgroundColor: Colors.success,
-            }}
-          />
           <Text
             selectable
             style={{

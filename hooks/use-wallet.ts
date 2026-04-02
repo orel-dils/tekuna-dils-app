@@ -7,6 +7,7 @@ export interface Wallet {
   user_id: string;
   address: string;
   balance: number;
+  locked_balance: number;
   created_at: string;
 }
 
@@ -15,6 +16,7 @@ export function useWallet() {
   const [wallet, setWallet] = useState<Wallet | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isConnected, setIsConnected] = useState(false);
 
   const fetchWallet = useCallback(async () => {
     if (!user) {
@@ -65,12 +67,15 @@ export function useWallet() {
           );
         }
       )
-      .subscribe();
+      .subscribe((status) => {
+        setIsConnected(status === 'SUBSCRIBED');
+      });
 
     return () => {
       channel.unsubscribe();
+      setIsConnected(false);
     };
   }, [wallet?.id]);
 
-  return { wallet, loading, error, refetch: fetchWallet };
+  return { wallet, loading, error, isConnected, refetch: fetchWallet };
 }
