@@ -7,6 +7,7 @@ import {
   Animated,
   Easing,
   Pressable,
+  TouchableOpacity,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -44,14 +45,14 @@ export default function LoginScreen() {
   }, [fadeAnim, slideAnim]);
 
   const handleLogin = async () => {
-    setLocalError('');
-
     if (!email.trim() || !password) {
       setLocalError('\u05E0\u05D0 \u05DC\u05DE\u05DC\u05D0 \u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D5\u05E1\u05D9\u05E1\u05DE\u05D0');
       return;
     }
 
     setIsLoading(true);
+    setLocalError('');
+
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email: email.trim(),
@@ -59,15 +60,20 @@ export default function LoginScreen() {
       });
 
       if (error) {
-        if (error.message.includes('Invalid login')) {
+        if (
+          error.message.includes('Invalid login') ||
+          error.message.includes('invalid_credentials')
+        ) {
           setLocalError('\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D0\u05D5 \u05E1\u05D9\u05E1\u05DE\u05D0 \u05E9\u05D2\u05D5\u05D9\u05D9\u05DD');
+        } else if (error.message.includes('Email not confirmed')) {
+          setLocalError('\u05E0\u05D0 \u05DC\u05D0\u05DE\u05EA \u05D0\u05EA \u05D4\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05E9\u05DC\u05DA \u05EA\u05D7\u05D9\u05DC\u05D4');
         } else {
           setLocalError(error.message);
         }
       }
-      // Navigation handled by auth state listener in _layout.tsx
-    } catch (err: any) {
-      setLocalError(err.message || '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D4\u05EA\u05D7\u05D1\u05E8\u05D5\u05EA');
+      // Success → _layout.tsx onAuthStateChange handles redirect
+    } catch {
+      setLocalError('\u05E9\u05D2\u05D9\u05D0\u05EA \u05D7\u05D9\u05D1\u05D5\u05E8 \u2014 \u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1');
     } finally {
       setIsLoading(false);
     }
@@ -160,6 +166,48 @@ export default function LoginScreen() {
                 {'\u05D0\u05D9\u05DF \u05DC\u05DA \u05D7\u05E9\u05D1\u05D5\u05DF? \u05D4\u05D9\u05E8\u05E9\u05DD \u05E2\u05DB\u05E9\u05D9\u05D5'}
               </Text>
             </Pressable>
+
+            {__DEV__ && (
+              <TouchableOpacity
+                onPress={async () => {
+                  const testEmail = 'test@tekunapay.co.il';
+                  const testPass = 'Test1234!';
+
+                  // Try signup first (no-op if already exists)
+                  await supabase.auth.signUp({
+                    email: testEmail,
+                    password: testPass,
+                    options: {
+                      data: {
+                        full_name: '\u05DE\u05E9\u05EA\u05DE\u05E9 \u05D1\u05D3\u05D9\u05E7\u05D4',
+                      },
+                    },
+                  });
+
+                  // Then login
+                  const { error } = await supabase.auth.signInWithPassword({
+                    email: testEmail,
+                    password: testPass,
+                  });
+
+                  if (error) setLocalError(error.message);
+                }}
+                style={{
+                  marginTop: 12,
+                  padding: 8,
+                }}
+              >
+                <Text
+                  style={{
+                    color: '#666',
+                    textAlign: 'center',
+                    fontSize: 12,
+                  }}
+                >
+                  {'\uD83E\uDDEA \u05DB\u05E0\u05D9\u05E1\u05EA \u05D1\u05D3\u05D9\u05E7\u05D4 (DEV \u05D1\u05DC\u05D1\u05D3)'}
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         </Animated.View>
       </ScrollView>

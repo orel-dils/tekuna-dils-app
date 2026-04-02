@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { AuthProvider } from '@fastshot/auth';
 import { supabase } from '@/lib/supabase';
+import { AuthProvider } from '@fastshot/auth';
 import { LoadingScreen } from '@/components/loading-screen';
 import type { Session } from '@supabase/supabase-js';
 
@@ -13,21 +13,30 @@ export default function RootLayout() {
   const segments = useSegments();
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
-      setSession(s);
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
       setLoading(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, s) => {
-        setSession(s);
-      }
-    );
+    // Listen for auth changes
+    const { data: { subscription } } =
+      supabase.auth.onAuthStateChange((event, session) => {
+        setSession(session);
+
+        if (event === 'SIGNED_IN') {
+          router.replace('/(tabs)/home' as any);
+        }
+        if (event === 'SIGNED_OUT') {
+          router.replace('/(auth)/login' as any);
+        }
+      });
 
     return () => subscription.unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Auth guard: redirect based on session state
+  // Auth guard: redirect based on session state + segments
   useEffect(() => {
     if (loading) return;
 

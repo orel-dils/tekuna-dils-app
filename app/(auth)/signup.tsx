@@ -56,12 +56,12 @@ export default function SignupScreen() {
     }
 
     if (!email.trim()) {
-      setLocalError('\u05E0\u05D0 \u05DC\u05D4\u05D6\u05D9\u05DF \u05DB\u05EA\u05D5\u05D1\u05EA \u05D3\u05D5\u05D0\u05F4\u05DC');
+      setLocalError('\u05E0\u05D0 \u05DC\u05D4\u05D6\u05D9\u05DF \u05D0\u05D9\u05DE\u05D9\u05D9\u05DC');
       return;
     }
 
-    if (!password || password.length < 6) {
-      setLocalError('\u05D4\u05E1\u05D9\u05E1\u05DE\u05D0 \u05D7\u05D9\u05D9\u05D1\u05EA \u05DC\u05D4\u05DB\u05D9\u05DC \u05DC\u05E4\u05D7\u05D5\u05EA 6 \u05EA\u05D5\u05D5\u05D9\u05DD');
+    if (password.length < 6) {
+      setLocalError('\u05E1\u05D9\u05E1\u05DE\u05D0 \u05D7\u05D9\u05D9\u05D1\u05EA \u05DC\u05D4\u05D9\u05D5\u05EA \u05DC\u05E4\u05D7\u05D5\u05EA 6 \u05EA\u05D5\u05D5\u05D9\u05DD');
       return;
     }
 
@@ -71,28 +71,41 @@ export default function SignupScreen() {
     }
 
     setIsLoading(true);
+
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: email.trim(),
         password,
         options: {
           data: {
             full_name: fullName.trim(),
           },
+          emailRedirectTo: 'tekunapay://auth/callback',
         },
       });
 
       if (error) {
         if (error.message.includes('already registered')) {
-          setLocalError('\u05DB\u05EA\u05D5\u05D1\u05EA \u05D3\u05D5\u05D0\u05F4\u05DC \u05D6\u05D5 \u05DB\u05D1\u05E8 \u05E8\u05E9\u05D5\u05DE\u05D4');
+          setLocalError('\u05D4\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05DB\u05D1\u05E8 \u05E8\u05E9\u05D5\u05DD. \u05E0\u05E1\u05D4 \u05DC\u05D4\u05EA\u05D7\u05D1\u05E8.');
         } else {
           setLocalError(error.message);
         }
-      } else {
-        setSuccess('\u05E0\u05E9\u05DC\u05D7 \u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D0\u05D9\u05DE\u05D5\u05EA \u2014 \u05D1\u05D3\u05D5\u05E7 \u05EA\u05D9\u05D1\u05EA \u05D4\u05D3\u05D5\u05D0\u05E8');
+        return;
       }
-    } catch (err: any) {
-      setLocalError(err.message || '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D4\u05E8\u05E9\u05DE\u05D4');
+
+      // If session exists — email confirm is OFF → auto login
+      if (data.session) {
+        router.replace('/(tabs)/home' as any);
+      } else {
+        // Email confirm is ON
+        setSuccess(
+          '\u05E0\u05E9\u05DC\u05D7 \u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D0\u05D9\u05DE\u05D5\u05EA \u05DC\u05DB\u05EA\u05D5\u05D1\u05EA ' +
+          email +
+          ' \u2014 \u05D1\u05D3\u05D5\u05E7 \u05EA\u05D9\u05D1\u05EA \u05D4\u05D3\u05D5\u05D0\u05E8 \u05E9\u05DC\u05DA'
+        );
+      }
+    } catch {
+      setLocalError('\u05E9\u05D2\u05D9\u05D0\u05EA \u05D7\u05D9\u05D1\u05D5\u05E8 \u2014 \u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1');
     } finally {
       setIsLoading(false);
     }
