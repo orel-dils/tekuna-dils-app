@@ -29,9 +29,9 @@ export function useWallet() {
       setLoading(true);
       setError(null);
       const { data, error: fetchError } = await supabase
-        .from('wallets')
+        .from('wallets_v3')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('entity_id', user.id)
         .single();
 
       if (fetchError) throw fetchError;
@@ -58,7 +58,7 @@ export function useWallet() {
         {
           event: 'UPDATE',
           schema: 'public',
-          table: 'wallets',
+          table: 'wallets_v3',
           filter: `id=eq.${wallet.id}`,
         },
         (payload) => {

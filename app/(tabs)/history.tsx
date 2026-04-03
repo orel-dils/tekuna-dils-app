@@ -48,10 +48,10 @@ export default function HistoryScreen() {
 
   // Calculate totals
   const totalReceived = transactions
-    .filter((tx) => tx.to_address === wallet?.address)
+    .filter((tx) => tx.destination_address === wallet?.address)
     .reduce((sum, tx) => sum + tx.amount, 0);
   const totalSent = transactions
-    .filter((tx) => tx.from_address === wallet?.address)
+    .filter((tx) => tx.source_address === wallet?.address)
     .reduce((sum, tx) => sum + tx.amount, 0);
 
   return (

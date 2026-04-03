@@ -67,7 +67,7 @@ export default function TransactionDetailScreen() {
       setLoading(true);
       setError(null);
       const { data, error: fetchError } = await supabase
-        .from('transactions')
+        .from('ledger_transactions_v3')
         .select('*')
         .eq('id', id)
         .single();
@@ -109,7 +109,7 @@ export default function TransactionDetailScreen() {
     );
   }
 
-  const isSent = transaction.from_address === wallet?.address;
+  const isSent = transaction.source_address === wallet?.address;
   const isCompleted = transaction.status === 'completed';
 
   return (
@@ -229,11 +229,11 @@ export default function TransactionDetailScreen() {
           />
           <DetailRow
             label={'\u05DB\u05EA\u05D5\u05D1\u05EA \u05E9\u05D5\u05DC\u05D7'}
-            value={transaction.from_address}
+            value={transaction.source_address}
           />
           <DetailRow
             label={'\u05DB\u05EA\u05D5\u05D1\u05EA \u05E0\u05DE\u05E2\u05DF'}
-            value={transaction.to_address}
+            value={transaction.destination_address}
           />
           <DetailRow label="TX Hash" value={transaction.tx_hash} />
         </View>

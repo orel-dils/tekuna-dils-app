@@ -11,9 +11,9 @@ interface TransactionItemProps {
 
 export function TransactionItem({ transaction, walletAddress }: TransactionItemProps) {
   const router = useRouter();
-  const isSent = transaction.from_address === walletAddress;
+  const isSent = transaction.source_address === walletAddress;
   const amount = transaction.amount;
-  const counterparty = isSent ? transaction.to_address : transaction.from_address;
+  const counterparty = isSent ? transaction.destination_address : transaction.source_address;
   const label = isSent
     ? '\u05E0\u05E9\u05DC\u05D7 \u05DC-' + truncateAddress(counterparty)
     : '\u05D4\u05EA\u05E7\u05D1\u05DC \u05DE-' + truncateAddress(counterparty);

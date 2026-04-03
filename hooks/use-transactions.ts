@@ -3,8 +3,8 @@ import { supabase } from '@/lib/supabase';
 
 export interface Transaction {
   id: string;
-  from_address: string;
-  to_address: string;
+  source_address: string;
+  destination_address: string;
   amount: number;
   status: 'completed' | 'pending';
   tx_hash: string;
@@ -31,17 +31,17 @@ export function useTransactions(walletAddress: string | undefined) {
       setError(null);
 
       let query = supabase
-        .from('transactions')
+        .from('ledger_transactions_v3')
         .select('*')
         .order('created_at', { ascending: false });
 
       if (filter === 'sent') {
-        query = query.eq('from_address', walletAddress);
+        query = query.eq('source_address', walletAddress);
       } else if (filter === 'received') {
-        query = query.eq('to_address', walletAddress);
+        query = query.eq('destination_address', walletAddress);
       } else {
         query = query.or(
-          `from_address.eq.${walletAddress},to_address.eq.${walletAddress}`
+          `source_address.eq.${walletAddress},destination_address.eq.${walletAddress}`
         );
       }
 
@@ -70,13 +70,13 @@ export function useTransactions(walletAddress: string | undefined) {
         {
           event: 'INSERT',
           schema: 'public',
-          table: 'transactions',
+          table: 'ledger_transactions_v3',
         },
         (payload) => {
           const newTx = payload.new as Transaction;
           if (
-            newTx.from_address === walletAddress ||
-            newTx.to_address === walletAddress
+            newTx.source_address === walletAddress ||
+            newTx.destination_address === walletAddress
           ) {
             setTransactions((prev) => [newTx, ...prev]);
           }

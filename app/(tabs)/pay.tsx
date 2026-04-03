@@ -127,8 +127,8 @@ export default function PayScreen() {
         {
           event: 'INSERT',
           schema: 'public',
-          table: 'transactions',
-          filter: `to_address=eq.${wallet.address}`,
+          table: 'ledger_transactions_v3',
+          filter: `destination_address=eq.${wallet.address}`,
         },
         (payload) => {
           const tx = payload.new as Transaction;
@@ -236,7 +236,7 @@ export default function PayScreen() {
       `\u05E1\u05DB\u05D5\u05DD: \u20AA${formatBalance(receivedTxn.amount)}`,
       `\u05DE\u05E1\u05E4\u05E8 \u05E2\u05E1\u05E7\u05D4: ${receivedTxn.tx_hash || receivedTxn.id}`,
       `\u05EA\u05D0\u05E8\u05D9\u05DA: ${formatDateTime(receivedTxn.created_at)}`,
-      `\u05DE\u05D0\u05EA: ${receivedTxn.from_address}`,
+      `\u05DE\u05D0\u05EA: ${receivedTxn.source_address}`,
       '',
       'DILS Payment Network',
     ].join('\n');
@@ -394,7 +394,7 @@ export default function PayScreen() {
           />
 
           {/* From address */}
-          {receivedTxn?.from_address && (
+          {receivedTxn?.source_address && (
             <View style={{ gap: Spacing.xs }}>
               <Text
                 style={{
@@ -416,7 +416,7 @@ export default function PayScreen() {
                 }}
                 numberOfLines={1}
               >
-                {receivedTxn.from_address}
+                {receivedTxn.source_address}
               </Text>
             </View>
           )}

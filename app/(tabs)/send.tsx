@@ -12,8 +12,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Colors, Spacing, Radius } from '@/constants/theme';
 import { useWallet } from '@/hooks/use-wallet';
-import { supabase } from '@/lib/supabase';
 import { formatBalance } from '@/lib/format';
+import { useAuth } from '@fastshot/auth';
 import { GoldButton } from '@/components/gold-button';
 import { GoldInput } from '@/components/gold-input';
 import { LoadingScreen } from '@/components/loading-screen';
@@ -22,6 +22,7 @@ export default function SendScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const { wallet, loading: walletLoading, refetch } = useWallet();
+  const { session } = useAuth();
   const [toAddress, setToAddress] = useState('');
   const [amount, setAmount] = useState('');
   const [sending, setSending] = useState(false);
@@ -78,13 +79,33 @@ export default function SendScreen() {
 
     try {
       setSending(true);
-      const { error: rpcError } = await supabase.rpc('process_transaction', {
-        p_from_address: wallet!.address,
-        p_to_address: toAddress.trim(),
-        p_amount: numAmount,
-      });
 
-      if (rpcError) throw rpcError;
+      if (!session?.access_token) {
+        throw new Error('לא מחובר - נא להתחבר מחדש');
+      }
+
+      const res = await fetch(
+        'https://vwpnhzqsafonargpdbsr.supabase.co/functions/v1/partner-settlement-api/validate-pin',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session.access_token}`,
+            'x-partner-api-key': 'dils_live_bde45d45250f4de9b895a5a69bdb3219',
+          },
+          body: JSON.stringify({
+            pin_code: toAddress.trim(),
+            amount_minor: Math.round(numAmount * 100),
+            merchant_wallet: wallet!.address,
+            description: 'העברה מאפליקציה',
+          }),
+        }
+      );
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.message || `שגיאה בשליחה (${res.status})`);
+      }
 
       await refetch();
 

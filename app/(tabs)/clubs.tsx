@@ -73,9 +73,9 @@ export default function ClubsScreen() {
 
       const [myRes, allRes] = await Promise.all([
         supabase
-          .from('user_clubs')
+          .from('club_members')
           .select('id, club_id, membership_status, points_balance, joined_at, clubs(*)')
-          .eq('user_id', user.id),
+          .eq('profile_id', user.id),
         supabase
           .from('clubs')
           .select('*')
@@ -111,9 +111,9 @@ export default function ClubsScreen() {
     setJoiningId(clubId);
     try {
       const { error: joinError } = await supabase
-        .from('user_clubs')
+        .from('club_members')
         .insert({
-          user_id: user.id,
+          profile_id: user.id,
           club_id: clubId,
           membership_status: 'active',
           points_balance: 0,
