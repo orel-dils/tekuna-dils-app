@@ -4,6 +4,7 @@ import {
   Text,
   ScrollView,
   KeyboardAvoidingView,
+  Platform,
   Animated,
   Easing,
   Pressable,
@@ -44,9 +45,45 @@ export default function LoginScreen() {
     ]).start();
   }, [fadeAnim, slideAnim]);
 
+  const getErrorMessage = (errorMsg: string): string => {
+    if (errorMsg.includes('Invalid API') || errorMsg.includes('api key') || errorMsg.includes('apikey')) {
+      return 'שגיאת חיבור — נסה שוב';
+    }
+    if (errorMsg.includes('Invalid login') || errorMsg.includes('invalid_credentials')) {
+      return 'אימייל או סיסמא שגויים';
+    }
+    if (errorMsg.includes('Email not confirmed')) {
+      return 'נא לאמת את האימייל תחילה';
+    }
+    if (errorMsg.includes('Too many requests')) {
+      return 'יותר מדי ניסיונות — המתן דקה';
+    }
+    if (errorMsg.includes('Network') || errorMsg.includes('fetch')) {
+      return 'בעיית חיבור לאינטרנט';
+    }
+    return 'אירעה שגיאה — נסה שוב';
+  };
+
+  const logAuthError = async (errorMsg: string, userEmail: string) => {
+    try {
+      await supabase.from('app_events').insert({
+        event_name: 'auth_error',
+        platform: Platform.OS,
+        screen_name: 'login',
+        metadata: {
+          error_code: errorMsg,
+          email_domain: userEmail.split('@')[1] || 'unknown',
+          timestamp: new Date().toISOString(),
+        },
+      });
+    } catch {
+      // Silent fail — logging must never block UX
+    }
+  };
+
   const handleLogin = async () => {
     if (!email.trim() || !password) {
-      setLocalError('\u05E0\u05D0 \u05DC\u05DE\u05DC\u05D0 \u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D5\u05E1\u05D9\u05E1\u05DE\u05D0');
+      setLocalError('נא למלא אימייל וסיסמא');
       return;
     }
 
@@ -60,20 +97,12 @@ export default function LoginScreen() {
       });
 
       if (error) {
-        if (
-          error.message.includes('Invalid login') ||
-          error.message.includes('invalid_credentials')
-        ) {
-          setLocalError('\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D0\u05D5 \u05E1\u05D9\u05E1\u05DE\u05D0 \u05E9\u05D2\u05D5\u05D9\u05D9\u05DD');
-        } else if (error.message.includes('Email not confirmed')) {
-          setLocalError('\u05E0\u05D0 \u05DC\u05D0\u05DE\u05EA \u05D0\u05EA \u05D4\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05E9\u05DC\u05DA \u05EA\u05D7\u05D9\u05DC\u05D4');
-        } else {
-          setLocalError(error.message);
-        }
+        setLocalError(getErrorMessage(error.message));
+        await logAuthError(error.message, email);
       }
       // Success → _layout.tsx onAuthStateChange handles redirect
     } catch {
-      setLocalError('\u05E9\u05D2\u05D9\u05D0\u05EA \u05D7\u05D9\u05D1\u05D5\u05E8 \u2014 \u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1');
+      setLocalError('שגיאת חיבור — נסה שוב');
     } finally {
       setIsLoading(false);
     }
