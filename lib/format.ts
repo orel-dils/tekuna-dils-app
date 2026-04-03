@@ -5,7 +5,8 @@ export function formatBalance(amount: number): string {
   }).format(amount);
 }
 
-export function truncateAddress(address: string, startLen = 6, endLen = 4): string {
+export function truncateAddress(address: string | undefined | null, startLen = 6, endLen = 4): string {
+  if (!address) return '---';
   if (address.length <= startLen + endLen + 3) return address;
   return `${address.slice(0, startLen)}...${address.slice(-endLen)}`;
 }
