@@ -36,7 +36,7 @@ export default function ReceiveScreen() {
     return <LoadingScreen />;
   }
 
-  if (error || !wallet) {
+  if (error || !wallet || !wallet.address) {
     return (
       <ErrorState
         message={error || '\u05DC\u05D0 \u05E0\u05DE\u05E6\u05D0 \u05D0\u05E8\u05E0\u05E7'}

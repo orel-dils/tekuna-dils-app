@@ -156,7 +156,7 @@ export default function PayScreen() {
 
   // Realtime listener for payment confirmation — filtered by wallet address
   useEffect(() => {
-    if (step !== 'pin' || !wallet) return;
+    if (step !== 'pin' || !wallet?.address) return;
 
     const numAmount = parseFloat(amount);
     const channel = supabase
