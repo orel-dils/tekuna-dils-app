@@ -1,189 +1,7 @@
 {
   "version": 1,
-  "generatedAt": 1775198903347,
+  "generatedAt": 1775199925107,
   "entries": {
-    "LoginScreen@app/(auth)/login.tsx:83": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 83
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "flex": {
-              "line": 83,
-              "col": 41,
-              "endCol": 42,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:84": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 84
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "flex": {
-              "line": 85,
-              "col": 23,
-              "endCol": 24,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:103": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 103
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 103,
-              "col": 37,
-              "endCol": 45,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:135": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 135
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 139,
-              "col": 28,
-              "endCol": 30,
-              "raw": "14"
-            },
-            "textAlign": {
-              "line": 140,
-              "col": 29,
-              "endCol": 36,
-              "raw": "'right'"
-            },
-            "writingDirection": {
-              "line": 141,
-              "col": 36,
-              "endCol": 41,
-              "raw": "'rtl'"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:158": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 158
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 161,
-              "col": 28,
-              "endCol": 30,
-              "raw": "14"
-            },
-            "textAlign": {
-              "line": 162,
-              "col": 29,
-              "endCol": 36,
-              "raw": "'right'"
-            },
-            "writingDirection": {
-              "line": 163,
-              "col": 36,
-              "endCol": 41,
-              "raw": "'rtl'"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:171": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 171
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "marginTop": {
-              "line": 196,
-              "col": 29,
-              "endCol": 31,
-              "raw": "12"
-            },
-            "padding": {
-              "line": 197,
-              "col": 27,
-              "endCol": 28,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:200": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 200
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "color": {
-              "line": 202,
-              "col": 27,
-              "endCol": 33,
-              "raw": "'#666'"
-            },
-            "textAlign": {
-              "line": 203,
-              "col": 31,
-              "endCol": 39,
-              "raw": "'center'"
-            },
-            "fontSize": {
-              "line": 204,
-              "col": 30,
-              "endCol": 32,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
     "SignupScreen@app/(auth)/signup.tsx:115": {
       "element": {
         "file": "app/(auth)/signup.tsx",
@@ -411,6 +229,252 @@
               "col": 36,
               "endCol": 41,
               "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "LoadingScreen@components/loading-screen.tsx:10": {
+      "element": {
+        "file": "components/loading-screen.tsx",
+        "line": 10
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/loading-screen.tsx",
+          "properties": {
+            "flex": {
+              "line": 12,
+              "col": 14,
+              "endCol": 15,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 14,
+              "col": 20,
+              "endCol": 28,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 15,
+              "col": 24,
+              "endCol": 32,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 16,
+              "col": 13,
+              "endCol": 15,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoadingScreen@components/loading-screen.tsx:21": {
+      "element": {
+        "file": "components/loading-screen.tsx",
+        "line": 21
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/loading-screen.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 24,
+              "col": 22,
+              "endCol": 24,
+              "raw": "15"
+            },
+            "writingDirection": {
+              "line": 25,
+              "col": 30,
+              "endCol": 35,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:83": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 83
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "flex": {
+              "line": 83,
+              "col": 41,
+              "endCol": 42,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:84": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 84
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "flex": {
+              "line": 85,
+              "col": 23,
+              "endCol": 24,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:103": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 103
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 103,
+              "col": 37,
+              "endCol": 45,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:135": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 135
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 139,
+              "col": 28,
+              "endCol": 30,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 140,
+              "col": 29,
+              "endCol": 36,
+              "raw": "'right'"
+            },
+            "writingDirection": {
+              "line": 141,
+              "col": 36,
+              "endCol": 41,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:158": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 158
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 161,
+              "col": 28,
+              "endCol": 30,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 162,
+              "col": 29,
+              "endCol": 36,
+              "raw": "'right'"
+            },
+            "writingDirection": {
+              "line": 163,
+              "col": 36,
+              "endCol": 41,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:171": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 171
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "marginTop": {
+              "line": 196,
+              "col": 29,
+              "endCol": 31,
+              "raw": "12"
+            },
+            "padding": {
+              "line": 197,
+              "col": 27,
+              "endCol": 28,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:200": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 200
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "color": {
+              "line": 202,
+              "col": 27,
+              "endCol": 33,
+              "raw": "'#666'"
+            },
+            "textAlign": {
+              "line": 203,
+              "col": 31,
+              "endCol": 39,
+              "raw": "'center'"
+            },
+            "fontSize": {
+              "line": 204,
+              "col": 30,
+              "endCol": 32,
+              "raw": "12"
             }
           }
         }
@@ -2514,10 +2578,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:274": {
+    "PayScreen@app/(tabs)/pay.tsx:316": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 274
+        "line": 316
       },
       "styles": [
         {
@@ -2525,7 +2589,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "flex": {
-              "line": 275,
+              "line": 317,
               "col": 23,
               "endCol": 24,
               "raw": "1"
@@ -2534,10 +2598,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:286": {
+    "PayScreen@app/(tabs)/pay.tsx:328": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 286
+        "line": 328
       },
       "styles": [
         {
@@ -2545,7 +2609,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "alignItems": {
-              "line": 289,
+              "line": 331,
               "col": 24,
               "endCol": 32,
               "raw": "'center'"
@@ -2554,10 +2618,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:294": {
+    "PayScreen@app/(tabs)/pay.tsx:336": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 294
+        "line": 336
       },
       "styles": [
         {
@@ -2565,49 +2629,49 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "width": {
-              "line": 296,
+              "line": 338,
               "col": 21,
               "endCol": 24,
               "raw": "120"
             },
             "height": {
-              "line": 297,
+              "line": 339,
               "col": 22,
               "endCol": 25,
               "raw": "120"
             },
             "borderRadius": {
-              "line": 298,
+              "line": 340,
               "col": 28,
               "endCol": 30,
               "raw": "60"
             },
             "backgroundColor": {
-              "line": 299,
+              "line": 341,
               "col": 31,
               "endCol": 53,
               "raw": "'rgba(52,199,89,0.12)'"
             },
             "borderWidth": {
-              "line": 300,
+              "line": 342,
               "col": 27,
               "endCol": 28,
               "raw": "3"
             },
             "alignItems": {
-              "line": 302,
+              "line": 344,
               "col": 26,
               "endCol": 34,
               "raw": "'center'"
             },
             "justifyContent": {
-              "line": 303,
+              "line": 345,
               "col": 30,
               "endCol": 38,
               "raw": "'center'"
             },
             "boxShadow": {
-              "line": 304,
+              "line": 346,
               "col": 25,
               "endCol": 55,
               "raw": "'0 0 50px rgba(52,199,89,0.3)'"
@@ -2616,10 +2680,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:308": {
+    "PayScreen@app/(tabs)/pay.tsx:350": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 308
+        "line": 350
       },
       "styles": [
         {
@@ -2627,13 +2691,13 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 308,
+              "line": 350,
               "col": 37,
               "endCol": 39,
               "raw": "56"
             },
             "lineHeight": {
-              "line": 308,
+              "line": 350,
               "col": 53,
               "endCol": 55,
               "raw": "64"
@@ -2642,10 +2706,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:313": {
+    "PayScreen@app/(tabs)/pay.tsx:355": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 313
+        "line": 355
       },
       "styles": [
         {
@@ -2653,7 +2717,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "alignItems": {
-              "line": 315,
+              "line": 357,
               "col": 24,
               "endCol": 32,
               "raw": "'center'"
@@ -2662,10 +2726,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:320": {
+    "PayScreen@app/(tabs)/pay.tsx:362": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 320
+        "line": 362
       },
       "styles": [
         {
@@ -2673,25 +2737,25 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 322,
+              "line": 364,
               "col": 24,
               "endCol": 26,
               "raw": "30"
             },
             "fontWeight": {
-              "line": 323,
+              "line": 365,
               "col": 26,
               "endCol": 31,
               "raw": "'800'"
             },
             "textAlign": {
-              "line": 325,
+              "line": 367,
               "col": 25,
               "endCol": 33,
               "raw": "'center'"
             },
             "writingDirection": {
-              "line": 326,
+              "line": 368,
               "col": 32,
               "endCol": 37,
               "raw": "'rtl'"
@@ -2700,10 +2764,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:333": {
+    "PayScreen@app/(tabs)/pay.tsx:375": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 333
+        "line": 375
       },
       "styles": [
         {
@@ -2711,19 +2775,19 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 336,
+              "line": 378,
               "col": 24,
               "endCol": 26,
               "raw": "44"
             },
             "fontWeight": {
-              "line": 337,
+              "line": 379,
               "col": 26,
               "endCol": 31,
               "raw": "'900'"
             },
             "letterSpacing": {
-              "line": 340,
+              "line": 382,
               "col": 29,
               "endCol": 31,
               "raw": "-1"
@@ -2732,10 +2796,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:348": {
+    "PayScreen@app/(tabs)/pay.tsx:390": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 348
+        "line": 390
       },
       "styles": [
         {
@@ -2743,19 +2807,19 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "width": {
-              "line": 350,
+              "line": 392,
               "col": 19,
               "endCol": 25,
               "raw": "'100%'"
             },
             "borderCurve": {
-              "line": 353,
+              "line": 395,
               "col": 25,
               "endCol": 37,
               "raw": "'continuous'"
             },
             "borderWidth": {
-              "line": 354,
+              "line": 396,
               "col": 25,
               "endCol": 26,
               "raw": "1"
@@ -2764,10 +2828,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:363": {
+    "PayScreen@app/(tabs)/pay.tsx:405": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 363
+        "line": 405
       },
       "styles": [
         {
@@ -2775,19 +2839,19 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 365,
+              "line": 407,
               "col": 26,
               "endCol": 28,
               "raw": "13"
             },
             "textAlign": {
-              "line": 367,
+              "line": 409,
               "col": 27,
               "endCol": 34,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 368,
+              "line": 410,
               "col": 34,
               "endCol": 39,
               "raw": "'rtl'"
@@ -2796,10 +2860,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:373": {
+    "PayScreen@app/(tabs)/pay.tsx:415": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 373
+        "line": 415
       },
       "styles": [
         {
@@ -2807,25 +2871,25 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 376,
+              "line": 418,
               "col": 26,
               "endCol": 28,
               "raw": "15"
             },
             "fontWeight": {
-              "line": 377,
+              "line": 419,
               "col": 28,
               "endCol": 33,
               "raw": "'600'"
             },
             "textAlign": {
-              "line": 379,
+              "line": 421,
               "col": 27,
               "endCol": 34,
               "raw": "'right'"
             },
             "fontFamily": {
-              "line": 380,
+              "line": 422,
               "col": 28,
               "endCol": 39,
               "raw": "'monospace'"
@@ -2834,10 +2898,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:389": {
+    "PayScreen@app/(tabs)/pay.tsx:431": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 389
+        "line": 431
       },
       "styles": [
         {
@@ -2845,7 +2909,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "height": {
-              "line": 391,
+              "line": 433,
               "col": 22,
               "endCol": 23,
               "raw": "1"
@@ -2854,10 +2918,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:399": {
+    "PayScreen@app/(tabs)/pay.tsx:441": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 399
+        "line": 441
       },
       "styles": [
         {
@@ -2865,19 +2929,19 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 401,
+              "line": 443,
               "col": 28,
               "endCol": 30,
               "raw": "13"
             },
             "textAlign": {
-              "line": 403,
+              "line": 445,
               "col": 29,
               "endCol": 36,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 404,
+              "line": 446,
               "col": 36,
               "endCol": 41,
               "raw": "'rtl'"
@@ -2886,10 +2950,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:409": {
+    "PayScreen@app/(tabs)/pay.tsx:451": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 409
+        "line": 451
       },
       "styles": [
         {
@@ -2897,19 +2961,19 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 412,
+              "line": 454,
               "col": 28,
               "endCol": 30,
               "raw": "14"
             },
             "textAlign": {
-              "line": 414,
+              "line": 456,
               "col": 29,
               "endCol": 36,
               "raw": "'right'"
             },
             "fontFamily": {
-              "line": 415,
+              "line": 457,
               "col": 30,
               "endCol": 41,
               "raw": "'monospace'"
@@ -2918,10 +2982,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:427": {
+    "PayScreen@app/(tabs)/pay.tsx:469": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 427
+        "line": 469
       },
       "styles": [
         {
@@ -2929,7 +2993,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "height": {
-              "line": 429,
+              "line": 471,
               "col": 26,
               "endCol": 27,
               "raw": "1"
@@ -2938,10 +3002,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:434": {
+    "PayScreen@app/(tabs)/pay.tsx:476": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 434
+        "line": 476
       },
       "styles": [
         {
@@ -2949,19 +3013,19 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 436,
+              "line": 478,
               "col": 30,
               "endCol": 32,
               "raw": "13"
             },
             "textAlign": {
-              "line": 438,
+              "line": 480,
               "col": 31,
               "endCol": 38,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 439,
+              "line": 481,
               "col": 38,
               "endCol": 43,
               "raw": "'rtl'"
@@ -2970,10 +3034,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:444": {
+    "PayScreen@app/(tabs)/pay.tsx:486": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 444
+        "line": 486
       },
       "styles": [
         {
@@ -2981,25 +3045,25 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 446,
+              "line": 488,
               "col": 30,
               "endCol": 32,
               "raw": "15"
             },
             "fontWeight": {
-              "line": 447,
+              "line": 489,
               "col": 32,
               "endCol": 37,
               "raw": "'600'"
             },
             "textAlign": {
-              "line": 449,
+              "line": 491,
               "col": 31,
               "endCol": 38,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 450,
+              "line": 492,
               "col": 38,
               "endCol": 43,
               "raw": "'rtl'"
@@ -3008,10 +3072,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:461": {
+    "PayScreen@app/(tabs)/pay.tsx:503": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 461
+        "line": 503
       },
       "styles": [
         {
@@ -3019,7 +3083,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "width": {
-              "line": 463,
+              "line": 505,
               "col": 19,
               "endCol": 25,
               "raw": "'100%'"
@@ -3028,10 +3092,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:487": {
+    "PayScreen@app/(tabs)/pay.tsx:529": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 487
+        "line": 529
       },
       "styles": [
         {
@@ -3039,7 +3103,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "flex": {
-              "line": 488,
+              "line": 530,
               "col": 23,
               "endCol": 24,
               "raw": "1"
@@ -3048,10 +3112,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:497": {
+    "PayScreen@app/(tabs)/pay.tsx:539": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 497
+        "line": 539
       },
       "styles": [
         {
@@ -3059,168 +3123,28 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 499,
+              "line": 541,
               "col": 22,
               "endCol": 24,
               "raw": "26"
             },
             "fontWeight": {
-              "line": 500,
+              "line": 542,
               "col": 24,
               "endCol": 29,
               "raw": "'800'"
             },
             "textAlign": {
-              "line": 502,
+              "line": 544,
               "col": 23,
               "endCol": 31,
               "raw": "'center'"
             },
             "writingDirection": {
-              "line": 503,
+              "line": 545,
               "col": 30,
               "endCol": 35,
               "raw": "'rtl'"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:509": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 509
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 511,
-              "col": 22,
-              "endCol": 24,
-              "raw": "15"
-            },
-            "textAlign": {
-              "line": 513,
-              "col": 23,
-              "endCol": 31,
-              "raw": "'center'"
-            },
-            "writingDirection": {
-              "line": 514,
-              "col": 30,
-              "endCol": 35,
-              "raw": "'rtl'"
-            },
-            "lineHeight": {
-              "line": 515,
-              "col": 24,
-              "endCol": 26,
-              "raw": "22"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:522": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 522
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "width": {
-              "line": 524,
-              "col": 19,
-              "endCol": 22,
-              "raw": "200"
-            },
-            "height": {
-              "line": 525,
-              "col": 20,
-              "endCol": 23,
-              "raw": "200"
-            },
-            "borderRadius": {
-              "line": 526,
-              "col": 26,
-              "endCol": 29,
-              "raw": "100"
-            },
-            "borderWidth": {
-              "line": 527,
-              "col": 25,
-              "endCol": 26,
-              "raw": "6"
-            },
-            "alignItems": {
-              "line": 529,
-              "col": 24,
-              "endCol": 32,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 530,
-              "col": 28,
-              "endCol": 36,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:535": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 535
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 538,
-              "col": 24,
-              "endCol": 26,
-              "raw": "52"
-            },
-            "fontWeight": {
-              "line": 539,
-              "col": 26,
-              "endCol": 31,
-              "raw": "'900'"
-            },
-            "letterSpacing": {
-              "line": 542,
-              "col": 29,
-              "endCol": 30,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:550": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 550
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 550,
-              "col": 35,
-              "endCol": 43,
-              "raw": "'center'"
             }
           }
         }
@@ -3238,50 +3162,36 @@
           "properties": {
             "fontSize": {
               "line": 553,
-              "col": 24,
-              "endCol": 26,
-              "raw": "32"
+              "col": 22,
+              "endCol": 24,
+              "raw": "15"
             },
-            "fontWeight": {
-              "line": 554,
-              "col": 26,
+            "textAlign": {
+              "line": 555,
+              "col": 23,
               "endCol": 31,
-              "raw": "'700'"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:561": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 561
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 563,
-              "col": 24,
-              "endCol": 26,
-              "raw": "13"
+              "raw": "'center'"
             },
             "writingDirection": {
-              "line": 565,
-              "col": 32,
-              "endCol": 37,
+              "line": 556,
+              "col": 30,
+              "endCol": 35,
               "raw": "'rtl'"
+            },
+            "lineHeight": {
+              "line": 557,
+              "col": 24,
+              "endCol": 26,
+              "raw": "22"
             }
           }
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:573": {
+    "PayScreen@app/(tabs)/pay.tsx:564": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 573
+        "line": 564
       },
       "styles": [
         {
@@ -3289,54 +3199,92 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "width": {
-              "line": 575,
+              "line": 566,
               "col": 19,
-              "endCol": 25,
-              "raw": "'100%'"
+              "endCol": 22,
+              "raw": "200"
             },
             "height": {
-              "line": 576,
+              "line": 567,
               "col": 20,
-              "endCol": 21,
-              "raw": "6"
+              "endCol": 23,
+              "raw": "200"
             },
             "borderRadius": {
-              "line": 577,
+              "line": 568,
               "col": 26,
-              "endCol": 27,
-              "raw": "3"
+              "endCol": 29,
+              "raw": "100"
             },
-            "overflow": {
-              "line": 579,
-              "col": 22,
-              "endCol": 30,
-              "raw": "'hidden'"
+            "borderWidth": {
+              "line": 569,
+              "col": 25,
+              "endCol": 26,
+              "raw": "6"
+            },
+            "alignItems": {
+              "line": 571,
+              "col": 24,
+              "endCol": 32,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 572,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
             }
           }
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:582": {
+    "PayScreen@app/(tabs)/pay.tsx:577": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 582
+        "line": 577
       },
       "styles": [
         {
           "origin": "inline",
           "file": "app/(tabs)/pay.tsx",
           "properties": {
-            "height": {
-              "line": 585,
-              "col": 22,
-              "endCol": 28,
-              "raw": "'100%'"
+            "fontSize": {
+              "line": 580,
+              "col": 24,
+              "endCol": 26,
+              "raw": "52"
             },
-            "borderRadius": {
-              "line": 586,
-              "col": 28,
-              "endCol": 29,
-              "raw": "3"
+            "fontWeight": {
+              "line": 581,
+              "col": 26,
+              "endCol": 31,
+              "raw": "'900'"
+            },
+            "letterSpacing": {
+              "line": 584,
+              "col": 29,
+              "endCol": 30,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:592": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 592
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 592,
+              "col": 35,
+              "endCol": 43,
+              "raw": "'center'"
             }
           }
         }
@@ -3352,32 +3300,26 @@
           "origin": "inline",
           "file": "app/(tabs)/pay.tsx",
           "properties": {
-            "borderCurve": {
-              "line": 597,
-              "col": 25,
-              "endCol": 37,
-              "raw": "'continuous'"
-            },
-            "borderWidth": {
-              "line": 598,
-              "col": 25,
-              "endCol": 26,
-              "raw": "1"
-            },
-            "alignItems": {
-              "line": 602,
+            "fontSize": {
+              "line": 595,
               "col": 24,
-              "endCol": 32,
-              "raw": "'center'"
+              "endCol": 26,
+              "raw": "32"
+            },
+            "fontWeight": {
+              "line": 596,
+              "col": 26,
+              "endCol": 31,
+              "raw": "'700'"
             }
           }
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:605": {
+    "PayScreen@app/(tabs)/pay.tsx:603": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 605
+        "line": 603
       },
       "styles": [
         {
@@ -3385,22 +3327,16 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 607,
+              "line": 605,
               "col": 24,
               "endCol": 26,
               "raw": "13"
             },
             "writingDirection": {
-              "line": 609,
+              "line": 607,
               "col": 32,
               "endCol": 37,
               "raw": "'rtl'"
-            },
-            "marginBottom": {
-              "line": 610,
-              "col": 28,
-              "endCol": 29,
-              "raw": "4"
             }
           }
         }
@@ -3416,159 +3352,145 @@
           "origin": "inline",
           "file": "app/(tabs)/pay.tsx",
           "properties": {
-            "fontSize": {
+            "width": {
+              "line": 617,
+              "col": 19,
+              "endCol": 25,
+              "raw": "'100%'"
+            },
+            "height": {
               "line": 618,
+              "col": 20,
+              "endCol": 21,
+              "raw": "6"
+            },
+            "borderRadius": {
+              "line": 619,
+              "col": 26,
+              "endCol": 27,
+              "raw": "3"
+            },
+            "overflow": {
+              "line": 621,
+              "col": 22,
+              "endCol": 30,
+              "raw": "'hidden'"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:624": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 624
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "height": {
+              "line": 627,
+              "col": 22,
+              "endCol": 28,
+              "raw": "'100%'"
+            },
+            "borderRadius": {
+              "line": 628,
+              "col": 28,
+              "endCol": 29,
+              "raw": "3"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:635": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 635
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "borderCurve": {
+              "line": 639,
+              "col": 25,
+              "endCol": 37,
+              "raw": "'continuous'"
+            },
+            "borderWidth": {
+              "line": 640,
+              "col": 25,
+              "endCol": 26,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 644,
+              "col": 24,
+              "endCol": 32,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:647": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 647
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 649,
+              "col": 24,
+              "endCol": 26,
+              "raw": "13"
+            },
+            "writingDirection": {
+              "line": 651,
+              "col": 32,
+              "endCol": 37,
+              "raw": "'rtl'"
+            },
+            "marginBottom": {
+              "line": 652,
+              "col": 28,
+              "endCol": 29,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:657": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 657
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 660,
               "col": 24,
               "endCol": 26,
               "raw": "24"
             },
             "fontWeight": {
-              "line": 619,
+              "line": 661,
               "col": 26,
               "endCol": 31,
               "raw": "'700'"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:639": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 639
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "flex": {
-              "line": 641,
-              "col": 14,
-              "endCol": 15,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:648": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 648
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "flex": {
-              "line": 648,
-              "col": 36,
-              "endCol": 37,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:650": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 650
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 652,
-              "col": 22,
-              "endCol": 24,
-              "raw": "26"
-            },
-            "fontWeight": {
-              "line": 653,
-              "col": 24,
-              "endCol": 29,
-              "raw": "'800'"
-            },
-            "textAlign": {
-              "line": 655,
-              "col": 23,
-              "endCol": 30,
-              "raw": "'right'"
-            },
-            "writingDirection": {
-              "line": 656,
-              "col": 30,
-              "endCol": 35,
-              "raw": "'rtl'"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:663": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 663
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "flex": {
-              "line": 665,
-              "col": 18,
-              "endCol": 19,
-              "raw": "1"
-            },
-            "alignItems": {
-              "line": 666,
-              "col": 24,
-              "endCol": 32,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 667,
-              "col": 28,
-              "endCol": 36,
-              "raw": "'center'"
-            },
-            "minHeight": {
-              "line": 668,
-              "col": 23,
-              "endCol": 26,
-              "raw": "120"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:671": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 671
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 673,
-              "col": 24,
-              "endCol": 26,
-              "raw": "14"
-            },
-            "writingDirection": {
-              "line": 675,
-              "col": 32,
-              "endCol": 37,
-              "raw": "'rtl'"
             }
           }
         }
@@ -3584,32 +3506,116 @@
           "origin": "inline",
           "file": "app/(tabs)/pay.tsx",
           "properties": {
+            "flex": {
+              "line": 683,
+              "col": 14,
+              "endCol": 15,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:690": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 690
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "flex": {
+              "line": 690,
+              "col": 36,
+              "endCol": 37,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:692": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 692
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
             "fontSize": {
-              "line": 684,
-              "col": 24,
-              "endCol": 26,
-              "raw": "52"
+              "line": 694,
+              "col": 22,
+              "endCol": 24,
+              "raw": "26"
             },
             "fontWeight": {
-              "line": 685,
-              "col": 26,
-              "endCol": 31,
+              "line": 695,
+              "col": 24,
+              "endCol": 29,
               "raw": "'800'"
             },
-            "letterSpacing": {
-              "line": 688,
-              "col": 29,
-              "endCol": 31,
-              "raw": "-1"
+            "textAlign": {
+              "line": 697,
+              "col": 23,
+              "endCol": 30,
+              "raw": "'right'"
+            },
+            "writingDirection": {
+              "line": 698,
+              "col": 30,
+              "endCol": 35,
+              "raw": "'rtl'"
             }
           }
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:694": {
+    "PayScreen@app/(tabs)/pay.tsx:705": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 694
+        "line": 705
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "flex": {
+              "line": 707,
+              "col": 18,
+              "endCol": 19,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 708,
+              "col": 24,
+              "endCol": 32,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 709,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
+            },
+            "minHeight": {
+              "line": 710,
+              "col": 23,
+              "endCol": 26,
+              "raw": "120"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:713": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 713
       },
       "styles": [
         {
@@ -3617,39 +3623,13 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontSize": {
-              "line": 696,
-              "col": 26,
-              "endCol": 28,
-              "raw": "13"
-            }
-          }
-        }
-      ]
-    },
-    "PayScreen@app/(tabs)/pay.tsx:709": {
-      "element": {
-        "file": "app/(tabs)/pay.tsx",
-        "line": 709
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/pay.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 713,
+              "line": 715,
               "col": 24,
               "endCol": 26,
               "raw": "14"
             },
-            "textAlign": {
-              "line": 714,
-              "col": 25,
-              "endCol": 33,
-              "raw": "'center'"
-            },
             "writingDirection": {
-              "line": 715,
+              "line": 717,
               "col": 32,
               "endCol": 37,
               "raw": "'rtl'"
@@ -3658,10 +3638,94 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:725": {
+    "PayScreen@app/(tabs)/pay.tsx:723": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 725
+        "line": 723
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 726,
+              "col": 24,
+              "endCol": 26,
+              "raw": "52"
+            },
+            "fontWeight": {
+              "line": 727,
+              "col": 26,
+              "endCol": 31,
+              "raw": "'800'"
+            },
+            "letterSpacing": {
+              "line": 730,
+              "col": 29,
+              "endCol": 31,
+              "raw": "-1"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:736": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 736
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 738,
+              "col": 26,
+              "endCol": 28,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:751": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 751
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/pay.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 755,
+              "col": 24,
+              "endCol": 26,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 756,
+              "col": 25,
+              "endCol": 33,
+              "raw": "'center'"
+            },
+            "writingDirection": {
+              "line": 757,
+              "col": 32,
+              "endCol": 37,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "PayScreen@app/(tabs)/pay.tsx:767": {
+      "element": {
+        "file": "app/(tabs)/pay.tsx",
+        "line": 767
       },
       "styles": [
         {
@@ -3669,7 +3733,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "flexDirection": {
-              "line": 725,
+              "line": 767,
               "col": 52,
               "endCol": 57,
               "raw": "'row'"
@@ -3678,10 +3742,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:727": {
+    "PayScreen@app/(tabs)/pay.tsx:769": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 727
+        "line": 769
       },
       "styles": [
         {
@@ -3690,10 +3754,10 @@
         }
       ]
     },
-    "PayScreen@app/(tabs)/pay.tsx:746": {
+    "PayScreen@app/(tabs)/pay.tsx:788": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
-        "line": 746
+        "line": 788
       },
       "styles": [
         {
@@ -3701,7 +3765,7 @@
           "file": "app/(tabs)/pay.tsx",
           "properties": {
             "fontWeight": {
-              "line": 749,
+              "line": 791,
               "col": 34,
               "endCol": 39,
               "raw": "'600'"
@@ -3988,10 +4052,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:134": {
+    "SendScreen@app/(tabs)/send.tsx:207": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 134
+        "line": 207
       },
       "styles": [
         {
@@ -3999,7 +4063,7 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "flex": {
-              "line": 134,
+              "line": 207,
               "col": 41,
               "endCol": 42,
               "raw": "1"
@@ -4008,10 +4072,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:135": {
+    "SendScreen@app/(tabs)/send.tsx:208": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 135
+        "line": 208
       },
       "styles": [
         {
@@ -4019,7 +4083,7 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "flex": {
-              "line": 136,
+              "line": 209,
               "col": 23,
               "endCol": 24,
               "raw": "1"
@@ -4028,10 +4092,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:147": {
+    "SendScreen@app/(tabs)/send.tsx:220": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 147
+        "line": 220
       },
       "styles": [
         {
@@ -4039,25 +4103,25 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "fontSize": {
-              "line": 149,
+              "line": 222,
               "col": 24,
               "endCol": 26,
               "raw": "26"
             },
             "fontWeight": {
-              "line": 150,
+              "line": 223,
               "col": 26,
               "endCol": 31,
               "raw": "'800'"
             },
             "textAlign": {
-              "line": 152,
+              "line": 225,
               "col": 25,
               "endCol": 32,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 153,
+              "line": 226,
               "col": 32,
               "endCol": 37,
               "raw": "'rtl'"
@@ -4066,22 +4130,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:173": {
+    "SendScreen@app/(tabs)/send.tsx:234": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 173
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "SendScreen@app/(tabs)/send.tsx:194": {
-      "element": {
-        "file": "app/(tabs)/send.tsx",
-        "line": 194
+        "line": 234
       },
       "styles": [
         {
@@ -4089,39 +4141,25 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "fontSize": {
-              "line": 194,
-              "col": 37,
-              "endCol": 39,
-              "raw": "18"
-            }
-          }
-        }
-      ]
-    },
-    "SendScreen@app/(tabs)/send.tsx:195": {
-      "element": {
-        "file": "app/(tabs)/send.tsx",
-        "line": 195
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/send.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 198,
+              "line": 237,
               "col": 26,
               "endCol": 28,
-              "raw": "16"
+              "raw": "14"
             },
             "fontWeight": {
-              "line": 199,
+              "line": 238,
               "col": 28,
               "endCol": 33,
               "raw": "'600'"
             },
+            "textAlign": {
+              "line": 239,
+              "col": 27,
+              "endCol": 34,
+              "raw": "'right'"
+            },
             "writingDirection": {
-              "line": 200,
+              "line": 240,
               "col": 34,
               "endCol": 39,
               "raw": "'rtl'"
@@ -4130,10 +4168,48 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:222": {
+    "SendScreen@app/(tabs)/send.tsx:245": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 222
+        "line": 245
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 247,
+              "col": 31,
+              "endCol": 44,
+              "raw": "'row-reverse'"
+            },
+            "alignItems": {
+              "line": 248,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
+            },
+            "borderCurve": {
+              "line": 251,
+              "col": 29,
+              "endCol": 41,
+              "raw": "'continuous'"
+            },
+            "borderWidth": {
+              "line": 252,
+              "col": 29,
+              "endCol": 32,
+              "raw": "1.5"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:257": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 257
       },
       "styles": [
         {
@@ -4141,31 +4217,441 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "fontSize": {
-              "line": 225,
+              "line": 257,
+              "col": 39,
+              "endCol": 41,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:260": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 260
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "flex": {
+              "line": 268,
+              "col": 24,
+              "endCol": 25,
+              "raw": "1"
+            },
+            "fontSize": {
+              "line": 270,
               "col": 28,
               "endCol": 30,
-              "raw": "14"
-            },
-            "fontWeight": {
-              "line": 226,
-              "col": 30,
-              "endCol": 35,
-              "raw": "'600'"
+              "raw": "16"
             },
             "textAlign": {
-              "line": 227,
+              "line": 272,
               "col": 29,
               "endCol": 36,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 228,
+              "line": 273,
+              "col": 36,
+              "endCol": 41,
+              "raw": "'rtl'"
+            },
+            "minHeight": {
+              "line": 274,
+              "col": 29,
+              "endCol": 31,
+              "raw": "52"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:281": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 281
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 281,
+              "col": 41,
+              "endCol": 49,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:288": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 288
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "borderCurve": {
+              "line": 292,
+              "col": 31,
+              "endCol": 43,
+              "raw": "'continuous'"
+            },
+            "borderWidth": {
+              "line": 293,
+              "col": 31,
+              "endCol": 32,
+              "raw": "1"
+            },
+            "overflow": {
+              "line": 295,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'hidden'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:299": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 299
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:316": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 316
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "width": {
+              "line": 318,
+              "col": 31,
+              "endCol": 33,
+              "raw": "36"
+            },
+            "height": {
+              "line": 319,
+              "col": 32,
+              "endCol": 34,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 320,
+              "col": 38,
+              "endCol": 40,
+              "raw": "18"
+            },
+            "backgroundColor": {
+              "line": 321,
+              "col": 41,
+              "endCol": 64,
+              "raw": "'rgba(197,160,40,0.12)'"
+            },
+            "alignItems": {
+              "line": 322,
+              "col": 36,
+              "endCol": 44,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 323,
+              "col": 40,
+              "endCol": 48,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:326": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 326
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 326,
+              "col": 47,
+              "endCol": 49,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:330": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 330
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "flex": {
+              "line": 330,
+              "col": 41,
+              "endCol": 42,
+              "raw": "1"
+            },
+            "gap": {
+              "line": 330,
+              "col": 49,
+              "endCol": 50,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:331": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 331
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 334,
+              "col": 36,
+              "endCol": 38,
+              "raw": "15"
+            },
+            "fontWeight": {
+              "line": 335,
+              "col": 38,
+              "endCol": 43,
+              "raw": "'600'"
+            },
+            "textAlign": {
+              "line": 336,
+              "col": 37,
+              "endCol": 44,
+              "raw": "'right'"
+            },
+            "writingDirection": {
+              "line": 337,
+              "col": 44,
+              "endCol": 49,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:343": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 343
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 346,
+              "col": 36,
+              "endCol": 38,
+              "raw": "13"
+            },
+            "textAlign": {
+              "line": 347,
+              "col": 37,
+              "endCol": 44,
+              "raw": "'right'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:354": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 354
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 357,
+              "col": 34,
+              "endCol": 36,
+              "raw": "13"
+            },
+            "fontWeight": {
+              "line": 358,
+              "col": 36,
+              "endCol": 41,
+              "raw": "'600'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:372": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 372
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 375,
+              "col": 30,
+              "endCol": 32,
+              "raw": "13"
+            },
+            "textAlign": {
+              "line": 376,
+              "col": 31,
+              "endCol": 39,
+              "raw": "'center'"
+            },
+            "writingDirection": {
+              "line": 377,
+              "col": 38,
+              "endCol": 43,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:400": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 400
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:421": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 421
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 421,
+              "col": 37,
+              "endCol": 39,
+              "raw": "18"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:422": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 422
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 425,
+              "col": 26,
+              "endCol": 28,
+              "raw": "16"
+            },
+            "fontWeight": {
+              "line": 426,
+              "col": 28,
+              "endCol": 33,
+              "raw": "'600'"
+            },
+            "writingDirection": {
+              "line": 427,
+              "col": 34,
+              "endCol": 39,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "SendScreen@app/(tabs)/send.tsx:448": {
+      "element": {
+        "file": "app/(tabs)/send.tsx",
+        "line": 448
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/send.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 451,
+              "col": 28,
+              "endCol": 30,
+              "raw": "14"
+            },
+            "fontWeight": {
+              "line": 452,
+              "col": 30,
+              "endCol": 35,
+              "raw": "'600'"
+            },
+            "textAlign": {
+              "line": 453,
+              "col": 29,
+              "endCol": 36,
+              "raw": "'right'"
+            },
+            "writingDirection": {
+              "line": 454,
               "col": 36,
               "endCol": 41,
               "raw": "'rtl'"
             },
             "textDecorationLine": {
-              "line": 229,
+              "line": 455,
               "col": 38,
               "endCol": 49,
               "raw": "'underline'"
@@ -4174,10 +4660,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:239": {
+    "SendScreen@app/(tabs)/send.tsx:465": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 239
+        "line": 465
       },
       "styles": [
         {
@@ -4185,13 +4671,13 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "flexDirection": {
-              "line": 241,
+              "line": 467,
               "col": 31,
               "endCol": 44,
               "raw": "'row-reverse'"
             },
             "justifyContent": {
-              "line": 242,
+              "line": 468,
               "col": 32,
               "endCol": 47,
               "raw": "'space-between'"
@@ -4200,10 +4686,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:246": {
+    "SendScreen@app/(tabs)/send.tsx:472": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 246
+        "line": 472
       },
       "styles": [
         {
@@ -4211,13 +4697,13 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "fontSize": {
-              "line": 249,
+              "line": 475,
               "col": 28,
               "endCol": 30,
               "raw": "13"
             },
             "writingDirection": {
-              "line": 250,
+              "line": 476,
               "col": 36,
               "endCol": 41,
               "raw": "'rtl'"
@@ -4226,10 +4712,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:255": {
+    "SendScreen@app/(tabs)/send.tsx:481": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 255
+        "line": 481
       },
       "styles": [
         {
@@ -4237,7 +4723,7 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "fontSize": {
-              "line": 258,
+              "line": 484,
               "col": 28,
               "endCol": 30,
               "raw": "13"
@@ -4246,10 +4732,10 @@
         }
       ]
     },
-    "SendScreen@app/(tabs)/send.tsx:269": {
+    "SendScreen@app/(tabs)/send.tsx:495": {
       "element": {
         "file": "app/(tabs)/send.tsx",
-        "line": 269
+        "line": 495
       },
       "styles": [
         {
@@ -4257,19 +4743,19 @@
           "file": "app/(tabs)/send.tsx",
           "properties": {
             "fontSize": {
-              "line": 273,
+              "line": 499,
               "col": 26,
               "endCol": 28,
               "raw": "14"
             },
             "textAlign": {
-              "line": 274,
+              "line": 500,
               "col": 27,
               "endCol": 34,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 275,
+              "line": 501,
               "col": 34,
               "endCol": 39,
               "raw": "'rtl'"
@@ -4864,18 +5350,6 @@
         }
       ]
     },
-    "TekunaLogo@components/tekuna-logo.tsx:16": {
-      "element": {
-        "file": "components/tekuna-logo.tsx",
-        "line": 16
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
     "GoldInput@components/gold-input.tsx:23": {
       "element": {
         "file": "components/gold-input.tsx",
@@ -5048,65 +5522,173 @@
         }
       ]
     },
-    "LoadingScreen@components/loading-screen.tsx:10": {
+    "TekunaLogo@components/tekuna-logo.tsx:16": {
       "element": {
-        "file": "components/loading-screen.tsx",
-        "line": 10
+        "file": "components/tekuna-logo.tsx",
+        "line": 16
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "ErrorState@components/error-state.tsx:12": {
+      "element": {
+        "file": "components/error-state.tsx",
+        "line": 12
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/loading-screen.tsx",
+          "file": "components/error-state.tsx",
           "properties": {
             "flex": {
-              "line": 12,
+              "line": 14,
               "col": 14,
               "endCol": 15,
               "raw": "1"
             },
             "alignItems": {
-              "line": 14,
+              "line": 16,
               "col": 20,
               "endCol": 28,
               "raw": "'center'"
             },
             "justifyContent": {
-              "line": 15,
+              "line": 17,
               "col": 24,
               "endCol": 32,
               "raw": "'center'"
-            },
-            "gap": {
-              "line": 16,
-              "col": 13,
-              "endCol": 15,
-              "raw": "16"
             }
           }
         }
       ]
     },
-    "LoadingScreen@components/loading-screen.tsx:21": {
+    "ErrorState@components/error-state.tsx:22": {
       "element": {
-        "file": "components/loading-screen.tsx",
-        "line": 21
+        "file": "components/error-state.tsx",
+        "line": 22
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/loading-screen.tsx",
+          "file": "components/error-state.tsx",
+          "properties": {
+            "width": {
+              "line": 24,
+              "col": 17,
+              "endCol": 19,
+              "raw": "56"
+            },
+            "height": {
+              "line": 25,
+              "col": 18,
+              "endCol": 20,
+              "raw": "56"
+            },
+            "borderRadius": {
+              "line": 26,
+              "col": 24,
+              "endCol": 26,
+              "raw": "28"
+            },
+            "backgroundColor": {
+              "line": 27,
+              "col": 27,
+              "endCol": 49,
+              "raw": "'rgba(255,59,48,0.15)'"
+            },
+            "alignItems": {
+              "line": 28,
+              "col": 22,
+              "endCol": 30,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 29,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "ErrorState@components/error-state.tsx:32": {
+      "element": {
+        "file": "components/error-state.tsx",
+        "line": 32
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/error-state.tsx",
           "properties": {
             "fontSize": {
-              "line": 24,
-              "col": 22,
-              "endCol": 24,
-              "raw": "15"
+              "line": 32,
+              "col": 33,
+              "endCol": 35,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "ErrorState@components/error-state.tsx:34": {
+      "element": {
+        "file": "components/error-state.tsx",
+        "line": 34
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/error-state.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 38,
+              "col": 20,
+              "endCol": 22,
+              "raw": "16"
+            },
+            "textAlign": {
+              "line": 39,
+              "col": 21,
+              "endCol": 29,
+              "raw": "'center'"
             },
             "writingDirection": {
-              "line": 25,
-              "col": 30,
-              "endCol": 35,
+              "line": 40,
+              "col": 28,
+              "endCol": 33,
               "raw": "'rtl'"
+            },
+            "lineHeight": {
+              "line": 41,
+              "col": 22,
+              "endCol": 24,
+              "raw": "24"
+            }
+          }
+        }
+      ]
+    },
+    "ErrorState@components/error-state.tsx:47": {
+      "element": {
+        "file": "components/error-state.tsx",
+        "line": 47
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/error-state.tsx",
+          "properties": {
+            "paddingHorizontal": {
+              "line": 51,
+              "col": 38,
+              "endCol": 40,
+              "raw": "32"
             }
           }
         }
@@ -5311,166 +5893,6 @@
               "col": 22,
               "endCol": 27,
               "raw": "'700'"
-            }
-          }
-        }
-      ]
-    },
-    "ErrorState@components/error-state.tsx:12": {
-      "element": {
-        "file": "components/error-state.tsx",
-        "line": 12
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/error-state.tsx",
-          "properties": {
-            "flex": {
-              "line": 14,
-              "col": 14,
-              "endCol": 15,
-              "raw": "1"
-            },
-            "alignItems": {
-              "line": 16,
-              "col": 20,
-              "endCol": 28,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 17,
-              "col": 24,
-              "endCol": 32,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "ErrorState@components/error-state.tsx:22": {
-      "element": {
-        "file": "components/error-state.tsx",
-        "line": 22
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/error-state.tsx",
-          "properties": {
-            "width": {
-              "line": 24,
-              "col": 17,
-              "endCol": 19,
-              "raw": "56"
-            },
-            "height": {
-              "line": 25,
-              "col": 18,
-              "endCol": 20,
-              "raw": "56"
-            },
-            "borderRadius": {
-              "line": 26,
-              "col": 24,
-              "endCol": 26,
-              "raw": "28"
-            },
-            "backgroundColor": {
-              "line": 27,
-              "col": 27,
-              "endCol": 49,
-              "raw": "'rgba(255,59,48,0.15)'"
-            },
-            "alignItems": {
-              "line": 28,
-              "col": 22,
-              "endCol": 30,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 29,
-              "col": 26,
-              "endCol": 34,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "ErrorState@components/error-state.tsx:32": {
-      "element": {
-        "file": "components/error-state.tsx",
-        "line": 32
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/error-state.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 32,
-              "col": 33,
-              "endCol": 35,
-              "raw": "24"
-            }
-          }
-        }
-      ]
-    },
-    "ErrorState@components/error-state.tsx:34": {
-      "element": {
-        "file": "components/error-state.tsx",
-        "line": 34
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/error-state.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 38,
-              "col": 20,
-              "endCol": 22,
-              "raw": "16"
-            },
-            "textAlign": {
-              "line": 39,
-              "col": 21,
-              "endCol": 29,
-              "raw": "'center'"
-            },
-            "writingDirection": {
-              "line": 40,
-              "col": 28,
-              "endCol": 33,
-              "raw": "'rtl'"
-            },
-            "lineHeight": {
-              "line": 41,
-              "col": 22,
-              "endCol": 24,
-              "raw": "24"
-            }
-          }
-        }
-      ]
-    },
-    "ErrorState@components/error-state.tsx:47": {
-      "element": {
-        "file": "components/error-state.tsx",
-        "line": 47
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/error-state.tsx",
-          "properties": {
-            "paddingHorizontal": {
-              "line": 51,
-              "col": 38,
-              "endCol": 40,
-              "raw": "32"
             }
           }
         }

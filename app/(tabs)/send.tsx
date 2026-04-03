@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,8 @@ import {
   Alert,
   Animated,
   Pressable,
+  TextInput,
+  ActivityIndicator,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
@@ -14,19 +16,34 @@ import { Colors, Spacing, Radius } from '@/constants/theme';
 import { useWallet } from '@/hooks/use-wallet';
 import { formatBalance } from '@/lib/format';
 import { useAuth } from '@fastshot/auth';
+import { supabase } from '@/lib/supabase';
+import { useContacts } from '@/hooks/use-contacts';
 import { GoldButton } from '@/components/gold-button';
 import { GoldInput } from '@/components/gold-input';
 import { LoadingScreen } from '@/components/loading-screen';
+
+interface ContactResult {
+  display_name: string;
+  phone_number: string;
+}
 
 export default function SendScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const { wallet, loading: walletLoading, refetch } = useWallet();
   const { session } = useAuth();
+  const { loadContacts } = useContacts();
   const [toAddress, setToAddress] = useState('');
   const [amount, setAmount] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+
+  // Contact search state
+  const [contactQuery, setContactQuery] = useState('');
+  const [contactResults, setContactResults] = useState<ContactResult[]>([]);
+  const [searchingContacts, setSearchingContacts] = useState(false);
+  const [contactsSynced, setContactsSynced] = useState(false);
+  const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -37,6 +54,62 @@ export default function SendScreen() {
       useNativeDriver: true,
     }).start();
   }, [fadeAnim]);
+
+  // Sync contacts on first mount (native only)
+  useEffect(() => {
+    if (!contactsSynced) {
+      loadContacts().then(() => setContactsSynced(true));
+    }
+  }, [contactsSynced, loadContacts]);
+
+  // Debounced contact search
+  const searchContacts = useCallback(
+    async (query: string) => {
+      if (query.length < 2) {
+        setContactResults([]);
+        return;
+      }
+
+      setSearchingContacts(true);
+      try {
+        const { data, error: searchError } = await supabase
+          .from('contact_book')
+          .select('display_name, phone_number')
+          .or(
+            `display_name.ilike.%${query}%,phone_number.ilike.%${query}%`
+          )
+          .limit(8);
+
+        if (searchError) throw searchError;
+        setContactResults(data ?? []);
+      } catch (e) {
+        console.log('Contact search error:', e);
+        setContactResults([]);
+      } finally {
+        setSearchingContacts(false);
+      }
+    },
+    []
+  );
+
+  const handleContactQueryChange = useCallback(
+    (text: string) => {
+      setContactQuery(text);
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+      searchTimeoutRef.current = setTimeout(() => {
+        searchContacts(text);
+      }, 300);
+    },
+    [searchContacts]
+  );
+
+  const handleSelectContact = useCallback((contact: ContactResult) => {
+    setToAddress(contact.phone_number);
+    setContactQuery('');
+    setContactResults([]);
+  }, []);
 
   if (walletLoading) {
     return <LoadingScreen />;
@@ -81,7 +154,7 @@ export default function SendScreen() {
       setSending(true);
 
       if (!session?.access_token) {
-        throw new Error('לא מחובר - נא להתחבר מחדש');
+        throw new Error('\u05DC\u05D0 \u05DE\u05D7\u05D5\u05D1\u05E8 - \u05E0\u05D0 \u05DC\u05D4\u05EA\u05D7\u05D1\u05E8 \u05DE\u05D7\u05D3\u05E9');
       }
 
       const res = await fetch(
@@ -97,14 +170,14 @@ export default function SendScreen() {
             pin_code: toAddress.trim(),
             amount_minor: Math.round(numAmount * 100),
             merchant_wallet: wallet!.address,
-            description: 'העברה מאפליקציה',
+            description: '\u05D4\u05E2\u05D1\u05E8\u05D4 \u05DE\u05D0\u05E4\u05DC\u05D9\u05E7\u05E6\u05D9\u05D4',
           }),
         }
       );
 
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.message || `שגיאה בשליחה (${res.status})`);
+        throw new Error(errorData.message || `\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05E9\u05DC\u05D9\u05D7\u05D4 (${res.status})`);
       }
 
       await refetch();
@@ -155,6 +228,160 @@ export default function SendScreen() {
           >
             {'\u05E9\u05DC\u05D7 DILS'}
           </Text>
+
+          {/* Contact Search */}
+          <View style={{ gap: Spacing.sm }}>
+            <Text
+              style={{
+                color: Colors.gold,
+                fontSize: 14,
+                fontWeight: '600',
+                textAlign: 'right',
+                writingDirection: 'rtl',
+              }}
+            >
+              {'\u05E9\u05DC\u05D7 \u05DC\u05D0\u05D9\u05E9 \u05E7\u05E9\u05E8'}
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row-reverse',
+                alignItems: 'center',
+                backgroundColor: Colors.inputBg,
+                borderRadius: Radius.lg,
+                borderCurve: 'continuous',
+                borderWidth: 1.5,
+                borderColor: Colors.cardBorder,
+                paddingHorizontal: Spacing.lg,
+              }}
+            >
+              <Text style={{ fontSize: 16, marginLeft: Spacing.sm }}>
+                {'\uD83D\uDD0D'}
+              </Text>
+              <TextInput
+                placeholder={'\u05D7\u05E4\u05E9 \u05E9\u05DD \u05D0\u05D5 \u05D8\u05DC\u05E4\u05D5\u05DF...'}
+                placeholderTextColor={Colors.textTertiary}
+                value={contactQuery}
+                onChangeText={handleContactQueryChange}
+                autoCapitalize="none"
+                autoCorrect={false}
+                style={{
+                  flex: 1,
+                  color: Colors.white,
+                  fontSize: 16,
+                  paddingVertical: Spacing.lg,
+                  textAlign: 'right',
+                  writingDirection: 'rtl',
+                  minHeight: 52,
+                }}
+              />
+            </View>
+
+            {/* Search loading indicator */}
+            {searchingContacts && (
+              <View style={{ alignItems: 'center', paddingVertical: Spacing.sm }}>
+                <ActivityIndicator color={Colors.gold} size="small" />
+              </View>
+            )}
+
+            {/* Contact Results */}
+            {contactResults.length > 0 && (
+              <View
+                style={{
+                  backgroundColor: Colors.card,
+                  borderRadius: Radius.lg,
+                  borderCurve: 'continuous',
+                  borderWidth: 1,
+                  borderColor: Colors.cardBorder,
+                  overflow: 'hidden',
+                }}
+              >
+                {contactResults.map((contact, index) => (
+                  <Pressable
+                    key={`${contact.phone_number}-${index}`}
+                    onPress={() => handleSelectContact(contact)}
+                    style={({ pressed }) => ({
+                      flexDirection: 'row-reverse',
+                      alignItems: 'center',
+                      gap: Spacing.md,
+                      paddingVertical: Spacing.md,
+                      paddingHorizontal: Spacing.lg,
+                      backgroundColor: pressed
+                        ? 'rgba(197,160,40,0.08)'
+                        : 'transparent',
+                      borderBottomWidth:
+                        index < contactResults.length - 1 ? 0.5 : 0,
+                      borderBottomColor: Colors.cardBorder,
+                    })}
+                  >
+                    <View
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 18,
+                        backgroundColor: 'rgba(197,160,40,0.12)',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Text style={{ fontSize: 16 }}>
+                        {'\uD83D\uDC64'}
+                      </Text>
+                    </View>
+                    <View style={{ flex: 1, gap: 2 }}>
+                      <Text
+                        style={{
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: '600',
+                          textAlign: 'right',
+                          writingDirection: 'rtl',
+                        }}
+                        numberOfLines={1}
+                      >
+                        {contact.display_name}
+                      </Text>
+                      <Text
+                        style={{
+                          color: Colors.textSecondary,
+                          fontSize: 13,
+                          textAlign: 'right',
+                          fontVariant: ['tabular-nums'],
+                        }}
+                      >
+                        {contact.phone_number}
+                      </Text>
+                    </View>
+                    <Text
+                      style={{
+                        color: Colors.gold,
+                        fontSize: 13,
+                        fontWeight: '600',
+                      }}
+                    >
+                      {'\u2190'}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            )}
+
+            {/* No results message */}
+            {contactQuery.length >= 2 &&
+              !searchingContacts &&
+              contactResults.length === 0 && (
+                <Text
+                  style={{
+                    color: Colors.textSecondary,
+                    fontSize: 13,
+                    textAlign: 'center',
+                    writingDirection: 'rtl',
+                    paddingVertical: Spacing.sm,
+                  }}
+                >
+                  {'\u05DC\u05D0 \u05E0\u05DE\u05E6\u05D0\u05D5 \u05D0\u05E0\u05E9\u05D9 \u05E7\u05E9\u05E8'}
+                </Text>
+              )}
+          </View>
 
           {/* Address Input */}
           <GoldInput
@@ -211,7 +438,6 @@ export default function SendScreen() {
               placeholder={'\u20AA0.00'}
               value={amount}
               onChangeText={(text) => {
-                // Allow only valid numeric input
                 const cleaned = text.replace(/[^0-9.]/g, '');
                 setAmount(cleaned);
                 setError('');

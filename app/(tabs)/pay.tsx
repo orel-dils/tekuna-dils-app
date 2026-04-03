@@ -6,12 +6,14 @@ import {
   Pressable,
   Animated,
   Share,
+  Platform,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Spacing, Radius } from '@/constants/theme';
 import { supabase } from '@/lib/supabase';
 import { useWallet } from '@/hooks/use-wallet';
+import { useAppStore } from '@/store/useAppStore';
 import { formatBalance, formatDateTime } from '@/lib/format';
 import { Transaction } from '@/hooks/use-transactions';
 import { LoadingScreen } from '@/components/loading-screen';
@@ -115,6 +117,43 @@ export default function PayScreen() {
     }
   }, [step, successScale, checkmarkRotate, successFade]);
 
+  // Log payment event to mobile-events endpoint
+  const logPaymentEvent = async (amountMinor: number) => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) return;
+
+      const sessionId = useAppStore.getState().sessionId;
+
+      await fetch(
+        process.env.EXPO_PUBLIC_SUPABASE_URL +
+          '/functions/v1/mobile-events',
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            session_id: sessionId,
+            events: [
+              {
+                event_name: 'payment_completed',
+                screen_name: 'pay',
+                metadata: {
+                  amount: amountMinor,
+                  platform: Platform.OS,
+                },
+              },
+            ],
+          }),
+        }
+      );
+    } catch (e) {
+      console.log('Payment event log error:', e);
+    }
+  };
+
   // Realtime listener for payment confirmation — filtered by wallet address
   useEffect(() => {
     if (step !== 'pin' || !wallet) return;
@@ -136,6 +175,9 @@ export default function PayScreen() {
             setReceivedTxn(tx);
             setStep('success');
             refetch();
+
+            // Log payment_completed event
+            logPaymentEvent(tx.amount);
           }
         }
       )
