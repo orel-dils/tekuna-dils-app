@@ -1,7 +1,139 @@
 {
   "version": 1,
-  "generatedAt": 1775206939823,
+  "generatedAt": 1775207205079,
   "entries": {
+    "GoldButton@components/gold-button.tsx:31": {
+      "element": {
+        "file": "components/gold-button.tsx",
+        "line": 31
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "GoldButton@components/gold-button.tsx:62": {
+      "element": {
+        "file": "components/gold-button.tsx",
+        "line": 62
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/gold-button.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 64,
+              "col": 26,
+              "endCol": 28,
+              "raw": "18"
+            }
+          }
+        }
+      ]
+    },
+    "GoldButton@components/gold-button.tsx:71": {
+      "element": {
+        "file": "components/gold-button.tsx",
+        "line": 71
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/gold-button.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 74,
+              "col": 26,
+              "endCol": 28,
+              "raw": "17"
+            },
+            "fontWeight": {
+              "line": 75,
+              "col": 28,
+              "endCol": 33,
+              "raw": "'700'"
+            },
+            "writingDirection": {
+              "line": 77,
+              "col": 34,
+              "endCol": 39,
+              "raw": "'rtl'"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoadingScreen@components/loading-screen.tsx:10": {
+      "element": {
+        "file": "components/loading-screen.tsx",
+        "line": 10
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/loading-screen.tsx",
+          "properties": {
+            "flex": {
+              "line": 12,
+              "col": 14,
+              "endCol": 15,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 14,
+              "col": 20,
+              "endCol": 28,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 15,
+              "col": 24,
+              "endCol": 32,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 16,
+              "col": 13,
+              "endCol": 15,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "LoadingScreen@components/loading-screen.tsx:21": {
+      "element": {
+        "file": "components/loading-screen.tsx",
+        "line": 21
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/loading-screen.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 24,
+              "col": 22,
+              "endCol": 24,
+              "raw": "15"
+            },
+            "writingDirection": {
+              "line": 25,
+              "col": 30,
+              "endCol": 35,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
     "ForgotPasswordScreen@app/(auth)/forgot-password.tsx:86": {
       "element": {
         "file": "app/(auth)/forgot-password.tsx",
@@ -502,10 +634,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:112": {
+    "LoginScreen@app/(auth)/login.tsx:142": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 112
+        "line": 142
       },
       "styles": [
         {
@@ -513,7 +645,7 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "flex": {
-              "line": 112,
+              "line": 142,
               "col": 41,
               "endCol": 42,
               "raw": "1"
@@ -522,10 +654,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:113": {
+    "LoginScreen@app/(auth)/login.tsx:143": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 113
+        "line": 143
       },
       "styles": [
         {
@@ -533,7 +665,7 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "flex": {
-              "line": 114,
+              "line": 144,
               "col": 23,
               "endCol": 24,
               "raw": "1"
@@ -542,10 +674,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:132": {
+    "LoginScreen@app/(auth)/login.tsx:164": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 132
+        "line": 164
       },
       "styles": [
         {
@@ -553,7 +685,7 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "alignItems": {
-              "line": 132,
+              "line": 164,
               "col": 37,
               "endCol": 45,
               "raw": "'center'"
@@ -562,10 +694,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:137": {
+    "LoginScreen@app/(auth)/login.tsx:169": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 137
+        "line": 169
       },
       "styles": [
         {
@@ -573,25 +705,25 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "fontSize": {
-              "line": 139,
+              "line": 171,
               "col": 24,
               "endCol": 26,
               "raw": "22"
             },
             "fontWeight": {
-              "line": 140,
+              "line": 172,
               "col": 26,
               "endCol": 31,
               "raw": "'700'"
             },
             "textAlign": {
-              "line": 142,
+              "line": 174,
               "col": 25,
               "endCol": 32,
               "raw": "'right'"
             },
             "writingDirection": {
-              "line": 143,
+              "line": 175,
               "col": 32,
               "endCol": 37,
               "raw": "'rtl'"
@@ -607,41 +739,15 @@
       },
       "styles": [
         {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 187,
-              "col": 30,
-              "endCol": 32,
-              "raw": "13"
-            },
-            "fontWeight": {
-              "line": 188,
-              "col": 32,
-              "endCol": 37,
-              "raw": "'600'"
-            },
-            "textAlign": {
-              "line": 189,
-              "col": 31,
-              "endCol": 38,
-              "raw": "'right'"
-            },
-            "writingDirection": {
-              "line": 190,
-              "col": 38,
-              "endCol": 43,
-              "raw": "'rtl'"
-            }
-          }
+          "origin": "dynamic",
+          "resolvable": false
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:199": {
+    "LoginScreen@app/(auth)/login.tsx:202": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 199
+        "line": 202
       },
       "styles": [
         {
@@ -649,19 +755,25 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "fontSize": {
-              "line": 203,
+              "line": 204,
               "col": 28,
               "endCol": 30,
-              "raw": "14"
+              "raw": "16"
             },
-            "textAlign": {
-              "line": 204,
-              "col": 29,
-              "endCol": 36,
-              "raw": "'right'"
+            "fontWeight": {
+              "line": 205,
+              "col": 30,
+              "endCol": 35,
+              "raw": "'600'"
+            },
+            "color": {
+              "line": 206,
+              "col": 25,
+              "endCol": 34,
+              "raw": "'#1F1F1F'"
             },
             "writingDirection": {
-              "line": 205,
+              "line": 207,
               "col": 36,
               "endCol": 41,
               "raw": "'rtl'"
@@ -670,10 +782,60 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:219": {
+    "LoginScreen@app/(auth)/login.tsx:215": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 219
+        "line": 215
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:233": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 233
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 235,
+              "col": 28,
+              "endCol": 30,
+              "raw": "16"
+            },
+            "fontWeight": {
+              "line": 236,
+              "col": 30,
+              "endCol": 35,
+              "raw": "'600'"
+            },
+            "color": {
+              "line": 237,
+              "col": 25,
+              "endCol": 34,
+              "raw": "'#1F1F1F'"
+            },
+            "writingDirection": {
+              "line": 238,
+              "col": 36,
+              "endCol": 41,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:247": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 247
       },
       "styles": [
         {
@@ -681,13 +843,181 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "flexDirection": {
-              "line": 221,
+              "line": 249,
+              "col": 29,
+              "endCol": 34,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 250,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:254": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 254
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "flex": {
+              "line": 256,
+              "col": 22,
+              "endCol": 23,
+              "raw": "1"
+            },
+            "height": {
+              "line": 257,
+              "col": 24,
+              "endCol": 27,
+              "raw": "0.5"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:261": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 261
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 264,
+              "col": 26,
+              "endCol": 28,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:269": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 269
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "flex": {
+              "line": 271,
+              "col": 22,
+              "endCol": 23,
+              "raw": "1"
+            },
+            "height": {
+              "line": 272,
+              "col": 24,
+              "endCol": 27,
+              "raw": "0.5"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:313": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 313
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 316,
+              "col": 30,
+              "endCol": 32,
+              "raw": "13"
+            },
+            "fontWeight": {
+              "line": 317,
+              "col": 32,
+              "endCol": 37,
+              "raw": "'600'"
+            },
+            "textAlign": {
+              "line": 318,
+              "col": 31,
+              "endCol": 38,
+              "raw": "'right'"
+            },
+            "writingDirection": {
+              "line": 319,
+              "col": 38,
+              "endCol": 43,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:328": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 328
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 332,
+              "col": 28,
+              "endCol": 30,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 333,
+              "col": 29,
+              "endCol": 36,
+              "raw": "'right'"
+            },
+            "writingDirection": {
+              "line": 334,
+              "col": 36,
+              "endCol": 41,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "LoginScreen@app/(auth)/login.tsx:349": {
+      "element": {
+        "file": "app/(auth)/login.tsx",
+        "line": 349
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(auth)/login.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 351,
               "col": 31,
               "endCol": 36,
               "raw": "'row'"
             },
             "alignItems": {
-              "line": 222,
+              "line": 352,
               "col": 28,
               "endCol": 36,
               "raw": "'center'"
@@ -696,10 +1026,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:227": {
+    "LoginScreen@app/(auth)/login.tsx:357": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 227
+        "line": 357
       },
       "styles": [
         {
@@ -707,13 +1037,13 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "flex": {
-              "line": 229,
+              "line": 359,
               "col": 24,
               "endCol": 25,
               "raw": "1"
             },
             "height": {
-              "line": 230,
+              "line": 360,
               "col": 26,
               "endCol": 29,
               "raw": "0.5"
@@ -722,10 +1052,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:234": {
+    "LoginScreen@app/(auth)/login.tsx:364": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 234
+        "line": 364
       },
       "styles": [
         {
@@ -733,7 +1063,7 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "fontSize": {
-              "line": 237,
+              "line": 367,
               "col": 28,
               "endCol": 30,
               "raw": "13"
@@ -742,10 +1072,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:242": {
+    "LoginScreen@app/(auth)/login.tsx:372": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 242
+        "line": 372
       },
       "styles": [
         {
@@ -753,13 +1083,13 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "flex": {
-              "line": 244,
+              "line": 374,
               "col": 24,
               "endCol": 25,
               "raw": "1"
             },
             "height": {
-              "line": 245,
+              "line": 375,
               "col": 26,
               "endCol": 29,
               "raw": "0.5"
@@ -768,10 +1098,10 @@
         }
       ]
     },
-    "LoginScreen@app/(auth)/login.tsx:259": {
+    "LoginScreen@app/(auth)/login.tsx:390": {
       "element": {
         "file": "app/(auth)/login.tsx",
-        "line": 259
+        "line": 390
       },
       "styles": [
         {
@@ -779,86 +1109,28 @@
           "file": "app/(auth)/login.tsx",
           "properties": {
             "fontSize": {
-              "line": 262,
+              "line": 393,
               "col": 26,
               "endCol": 28,
               "raw": "12"
             },
             "textAlign": {
-              "line": 263,
+              "line": 394,
               "col": 27,
               "endCol": 35,
               "raw": "'center'"
             },
             "writingDirection": {
-              "line": 264,
+              "line": 395,
               "col": 34,
               "endCol": 39,
               "raw": "'rtl'"
             },
             "lineHeight": {
-              "line": 265,
+              "line": 396,
               "col": 28,
               "endCol": 30,
               "raw": "18"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:272": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 272
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "marginTop": {
-              "line": 289,
-              "col": 36,
-              "endCol": 37,
-              "raw": "4"
-            },
-            "padding": {
-              "line": 289,
-              "col": 48,
-              "endCol": 49,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "LoginScreen@app/(auth)/login.tsx:291": {
-      "element": {
-        "file": "app/(auth)/login.tsx",
-        "line": 291
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(auth)/login.tsx",
-          "properties": {
-            "color": {
-              "line": 293,
-              "col": 27,
-              "endCol": 33,
-              "raw": "'#666'"
-            },
-            "textAlign": {
-              "line": 294,
-              "col": 31,
-              "endCol": 39,
-              "raw": "'center'"
-            },
-            "fontSize": {
-              "line": 295,
-              "col": 30,
-              "endCol": 32,
-              "raw": "12"
             }
           }
         }
@@ -3376,284 +3648,6 @@
         }
       ]
     },
-    "ReceiveScreen@app/(tabs)/receive.tsx:64": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 64
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "flex": {
-              "line": 65,
-              "col": 21,
-              "endCol": 22,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:74": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 74
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 76,
-              "col": 22,
-              "endCol": 30,
-              "raw": "'center'"
-            },
-            "width": {
-              "line": 78,
-              "col": 17,
-              "endCol": 23,
-              "raw": "'100%'"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:83": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 83
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 85,
-              "col": 22,
-              "endCol": 24,
-              "raw": "26"
-            },
-            "fontWeight": {
-              "line": 86,
-              "col": 24,
-              "endCol": 29,
-              "raw": "'800'"
-            },
-            "textAlign": {
-              "line": 88,
-              "col": 23,
-              "endCol": 31,
-              "raw": "'center'"
-            },
-            "writingDirection": {
-              "line": 89,
-              "col": 30,
-              "endCol": 35,
-              "raw": "'rtl'"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:96": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 96
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "borderCurve": {
-              "line": 101,
-              "col": 25,
-              "endCol": 37,
-              "raw": "'continuous'"
-            },
-            "borderWidth": {
-              "line": 102,
-              "col": 25,
-              "endCol": 26,
-              "raw": "2"
-            },
-            "alignItems": {
-              "line": 105,
-              "col": 24,
-              "endCol": 32,
-              "raw": "'center'"
-            },
-            "boxShadow": {
-              "line": 106,
-              "col": 23,
-              "endCol": 54,
-              "raw": "'0 0 40px rgba(197,160,40,0.2)'"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:113": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 113
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 113,
-              "col": 35,
-              "endCol": 43,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:114": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 114
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 117,
-              "col": 24,
-              "endCol": 26,
-              "raw": "14"
-            },
-            "fontWeight": {
-              "line": 118,
-              "col": 26,
-              "endCol": 31,
-              "raw": "'600'"
-            },
-            "writingDirection": {
-              "line": 119,
-              "col": 32,
-              "endCol": 37,
-              "raw": "'rtl'"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:124": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 124
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 128,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "fontFamily": {
-              "line": 129,
-              "col": 26,
-              "endCol": 37,
-              "raw": "'monospace'"
-            },
-            "textAlign": {
-              "line": 130,
-              "col": 25,
-              "endCol": 33,
-              "raw": "'center'"
-            },
-            "lineHeight": {
-              "line": 131,
-              "col": 26,
-              "endCol": 28,
-              "raw": "22"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:139": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 139
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 141,
-              "col": 27,
-              "endCol": 40,
-              "raw": "'row-reverse'"
-            },
-            "width": {
-              "line": 143,
-              "col": 19,
-              "endCol": 25,
-              "raw": "'100%'"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:146": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 146
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "flex": {
-              "line": 146,
-              "col": 31,
-              "endCol": 32,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "ReceiveScreen@app/(tabs)/receive.tsx:149": {
-      "element": {
-        "file": "app/(tabs)/receive.tsx",
-        "line": 149
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/receive.tsx",
-          "properties": {
-            "flex": {
-              "line": 149,
-              "col": 31,
-              "endCol": 32,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
     "PayScreen@app/(tabs)/pay.tsx:316": {
       "element": {
         "file": "app/(tabs)/pay.tsx",
@@ -4891,6 +4885,284 @@
               "col": 34,
               "endCol": 39,
               "raw": "'600'"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:64": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 64
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "flex": {
+              "line": 65,
+              "col": 21,
+              "endCol": 22,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:74": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 74
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 76,
+              "col": 22,
+              "endCol": 30,
+              "raw": "'center'"
+            },
+            "width": {
+              "line": 78,
+              "col": 17,
+              "endCol": 23,
+              "raw": "'100%'"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:83": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 83
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 85,
+              "col": 22,
+              "endCol": 24,
+              "raw": "26"
+            },
+            "fontWeight": {
+              "line": 86,
+              "col": 24,
+              "endCol": 29,
+              "raw": "'800'"
+            },
+            "textAlign": {
+              "line": 88,
+              "col": 23,
+              "endCol": 31,
+              "raw": "'center'"
+            },
+            "writingDirection": {
+              "line": 89,
+              "col": 30,
+              "endCol": 35,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:96": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 96
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "borderCurve": {
+              "line": 101,
+              "col": 25,
+              "endCol": 37,
+              "raw": "'continuous'"
+            },
+            "borderWidth": {
+              "line": 102,
+              "col": 25,
+              "endCol": 26,
+              "raw": "2"
+            },
+            "alignItems": {
+              "line": 105,
+              "col": 24,
+              "endCol": 32,
+              "raw": "'center'"
+            },
+            "boxShadow": {
+              "line": 106,
+              "col": 23,
+              "endCol": 54,
+              "raw": "'0 0 40px rgba(197,160,40,0.2)'"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:113": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 113
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 113,
+              "col": 35,
+              "endCol": 43,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:114": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 114
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 117,
+              "col": 24,
+              "endCol": 26,
+              "raw": "14"
+            },
+            "fontWeight": {
+              "line": 118,
+              "col": 26,
+              "endCol": 31,
+              "raw": "'600'"
+            },
+            "writingDirection": {
+              "line": 119,
+              "col": 32,
+              "endCol": 37,
+              "raw": "'rtl'"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:124": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 124
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 128,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "fontFamily": {
+              "line": 129,
+              "col": 26,
+              "endCol": 37,
+              "raw": "'monospace'"
+            },
+            "textAlign": {
+              "line": 130,
+              "col": 25,
+              "endCol": 33,
+              "raw": "'center'"
+            },
+            "lineHeight": {
+              "line": 131,
+              "col": 26,
+              "endCol": 28,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:139": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 139
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 141,
+              "col": 27,
+              "endCol": 40,
+              "raw": "'row-reverse'"
+            },
+            "width": {
+              "line": 143,
+              "col": 19,
+              "endCol": 25,
+              "raw": "'100%'"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:146": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 146
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "flex": {
+              "line": 146,
+              "col": 31,
+              "endCol": 32,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "ReceiveScreen@app/(tabs)/receive.tsx:149": {
+      "element": {
+        "file": "app/(tabs)/receive.tsx",
+        "line": 149
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/receive.tsx",
+          "properties": {
+            "flex": {
+              "line": 149,
+              "col": 31,
+              "endCol": 32,
+              "raw": "1"
             }
           }
         }
@@ -6558,86 +6830,6 @@
         }
       ]
     },
-    "GoldButton@components/gold-button.tsx:31": {
-      "element": {
-        "file": "components/gold-button.tsx",
-        "line": 31
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "GoldButton@components/gold-button.tsx:62": {
-      "element": {
-        "file": "components/gold-button.tsx",
-        "line": 62
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/gold-button.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 64,
-              "col": 26,
-              "endCol": 28,
-              "raw": "18"
-            }
-          }
-        }
-      ]
-    },
-    "GoldButton@components/gold-button.tsx:71": {
-      "element": {
-        "file": "components/gold-button.tsx",
-        "line": 71
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/gold-button.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 74,
-              "col": 26,
-              "endCol": 28,
-              "raw": "17"
-            },
-            "fontWeight": {
-              "line": 75,
-              "col": 28,
-              "endCol": 33,
-              "raw": "'700'"
-            },
-            "writingDirection": {
-              "line": 77,
-              "col": 34,
-              "endCol": 39,
-              "raw": "'rtl'"
-            }
-          }
-        },
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "TekunaLogo@components/tekuna-logo.tsx:16": {
-      "element": {
-        "file": "components/tekuna-logo.tsx",
-        "line": 16
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
     "GoldInput@components/gold-input.tsx:23": {
       "element": {
         "file": "components/gold-input.tsx",
@@ -6810,67 +7002,15 @@
         }
       ]
     },
-    "LoadingScreen@components/loading-screen.tsx:10": {
+    "TekunaLogo@components/tekuna-logo.tsx:16": {
       "element": {
-        "file": "components/loading-screen.tsx",
-        "line": 10
+        "file": "components/tekuna-logo.tsx",
+        "line": 16
       },
       "styles": [
         {
-          "origin": "inline",
-          "file": "components/loading-screen.tsx",
-          "properties": {
-            "flex": {
-              "line": 12,
-              "col": 14,
-              "endCol": 15,
-              "raw": "1"
-            },
-            "alignItems": {
-              "line": 14,
-              "col": 20,
-              "endCol": 28,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 15,
-              "col": 24,
-              "endCol": 32,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 16,
-              "col": 13,
-              "endCol": 15,
-              "raw": "16"
-            }
-          }
-        }
-      ]
-    },
-    "LoadingScreen@components/loading-screen.tsx:21": {
-      "element": {
-        "file": "components/loading-screen.tsx",
-        "line": 21
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/loading-screen.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 24,
-              "col": 22,
-              "endCol": 24,
-              "raw": "15"
-            },
-            "writingDirection": {
-              "line": 25,
-              "col": 30,
-              "endCol": 35,
-              "raw": "'rtl'"
-            }
-          }
+          "origin": "dynamic",
+          "resolvable": false
         }
       ]
     },

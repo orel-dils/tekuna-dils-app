@@ -8,11 +8,12 @@ import {
   Animated,
   Easing,
   Pressable,
-  TouchableOpacity,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Colors, Spacing } from '@/constants/theme';
+import { Ionicons } from '@expo/vector-icons';
+import { useAuth } from '@fastshot/auth';
+import { Colors, Spacing, Radius } from '@/constants/theme';
 import { supabase } from '@/lib/supabase';
 import { GoldButton } from '@/components/gold-button';
 import { GoldInput } from '@/components/gold-input';
@@ -21,6 +22,7 @@ import { TekunaLogo } from '@/components/tekuna-logo';
 export default function LoginScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  const { signInWithGoogle, isLoading: oauthLoading } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -46,22 +48,29 @@ export default function LoginScreen() {
   }, [fadeAnim, slideAnim]);
 
   const getErrorMessage = (errorMsg: string): string => {
-    if (errorMsg.includes('Invalid API') || errorMsg.includes('api key') || errorMsg.includes('apikey')) {
-      return 'שגיאת חיבור — נסה שוב';
+    if (
+      errorMsg.includes('Invalid API') ||
+      errorMsg.includes('api key') ||
+      errorMsg.includes('apikey')
+    ) {
+      return '\u05E9\u05D2\u05D9\u05D0\u05EA \u05D7\u05D9\u05D1\u05D5\u05E8 \u2014 \u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1';
     }
-    if (errorMsg.includes('Invalid login') || errorMsg.includes('invalid_credentials')) {
-      return 'אימייל או סיסמא שגויים';
+    if (
+      errorMsg.includes('Invalid login') ||
+      errorMsg.includes('invalid_credentials')
+    ) {
+      return '\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D0\u05D5 \u05E1\u05D9\u05E1\u05DE\u05D0 \u05E9\u05D2\u05D5\u05D9\u05D9\u05DD';
     }
     if (errorMsg.includes('Email not confirmed')) {
-      return 'נא לאמת את האימייל תחילה';
+      return '\u05E0\u05D0 \u05DC\u05D0\u05DE\u05EA \u05D0\u05EA \u05D4\u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05EA\u05D7\u05D9\u05DC\u05D4';
     }
     if (errorMsg.includes('Too many requests')) {
-      return 'יותר מדי ניסיונות — המתן דקה';
+      return '\u05D9\u05D5\u05EA\u05E8 \u05DE\u05D3\u05D9 \u05E0\u05D9\u05E1\u05D9\u05D5\u05E0\u05D5\u05EA \u2014 \u05D4\u05DE\u05EA\u05DF \u05D3\u05E7\u05D4';
     }
     if (errorMsg.includes('Network') || errorMsg.includes('fetch')) {
-      return 'בעיית חיבור לאינטרנט';
+      return '\u05D1\u05E2\u05D9\u05D9\u05EA \u05D7\u05D9\u05D1\u05D5\u05E8 \u05DC\u05D0\u05D9\u05E0\u05D8\u05E8\u05E0\u05D8';
     }
-    return 'אירעה שגיאה — נסה שוב';
+    return '\u05D0\u05D9\u05E8\u05E2\u05D4 \u05E9\u05D2\u05D9\u05D0\u05D4 \u2014 \u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1';
   };
 
   const logAuthError = async (errorMsg: string, userEmail: string) => {
@@ -83,7 +92,7 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     if (!email.trim() || !password) {
-      setLocalError('נא למלא אימייל וסיסמא');
+      setLocalError('\u05E0\u05D0 \u05DC\u05DE\u05DC\u05D0 \u05D0\u05D9\u05DE\u05D9\u05D9\u05DC \u05D5\u05E1\u05D9\u05E1\u05DE\u05D0');
       return;
     }
 
@@ -100,13 +109,34 @@ export default function LoginScreen() {
         setLocalError(getErrorMessage(error.message));
         await logAuthError(error.message, email);
       }
-      // Success → _layout.tsx onAuthStateChange handles redirect
+      // Success -> _layout.tsx onAuthStateChange handles redirect
     } catch {
-      setLocalError('שגיאת חיבור — נסה שוב');
+      setLocalError('\u05E9\u05D2\u05D9\u05D0\u05EA \u05D7\u05D9\u05D1\u05D5\u05E8 \u2014 \u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1');
     } finally {
       setIsLoading(false);
     }
   };
+
+  const handleGoogleLogin = async () => {
+    setLocalError('');
+    try {
+      await signInWithGoogle();
+    } catch {
+      setLocalError('\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D4\u05EA\u05D7\u05D1\u05E8\u05D5\u05EA \u05E2\u05DD Google');
+    }
+  };
+
+  // Apple button -> Google OAuth for now until Apple mechanism is built
+  const handleAppleLogin = async () => {
+    setLocalError('');
+    try {
+      await signInWithGoogle();
+    } catch {
+      setLocalError('\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D4\u05EA\u05D7\u05D1\u05E8\u05D5\u05EA \u05E2\u05DD Apple');
+    }
+  };
+
+  const anyLoading = isLoading || oauthLoading;
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
@@ -120,6 +150,8 @@ export default function LoginScreen() {
           paddingBottom: insets.bottom + 40,
         }}
         keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
       >
         <Animated.View
           style={{
@@ -146,7 +178,104 @@ export default function LoginScreen() {
             {'\u05D4\u05EA\u05D7\u05D1\u05E8\u05D5\u05EA'}
           </Text>
 
-          {/* Form */}
+          {/* Social Login Buttons */}
+          <View style={{ gap: Spacing.md }}>
+            {/* Google Button */}
+            <Pressable
+              onPress={handleGoogleLogin}
+              disabled={anyLoading}
+              style={({ pressed }) => ({
+                flexDirection: 'row-reverse',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: Spacing.md,
+                backgroundColor: Colors.white,
+                borderRadius: Radius.lg,
+                borderCurve: 'continuous',
+                paddingVertical: 14,
+                paddingHorizontal: Spacing.xxl,
+                minHeight: 52,
+                opacity: anyLoading ? 0.5 : pressed ? 0.85 : 1,
+              })}
+            >
+              <Ionicons name="logo-google" size={20} color="#1F1F1F" />
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: '600',
+                  color: '#1F1F1F',
+                  writingDirection: 'rtl',
+                }}
+              >
+                {'\u05D4\u05DE\u05E9\u05DA \u05E2\u05DD Google'}
+              </Text>
+            </Pressable>
+
+            {/* Apple Button */}
+            <Pressable
+              onPress={handleAppleLogin}
+              disabled={anyLoading}
+              style={({ pressed }) => ({
+                flexDirection: 'row-reverse',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: Spacing.md,
+                backgroundColor: Colors.white,
+                borderRadius: Radius.lg,
+                borderCurve: 'continuous',
+                paddingVertical: 14,
+                paddingHorizontal: Spacing.xxl,
+                minHeight: 52,
+                opacity: anyLoading ? 0.5 : pressed ? 0.85 : 1,
+              })}
+            >
+              <Ionicons name="logo-apple" size={22} color="#000" />
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontWeight: '600',
+                  color: '#1F1F1F',
+                  writingDirection: 'rtl',
+                }}
+              >
+                {'\u05D4\u05DE\u05E9\u05DA \u05E2\u05DD Apple'}
+              </Text>
+            </Pressable>
+          </View>
+
+          {/* Divider between social and email */}
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: Spacing.md,
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                height: 0.5,
+                backgroundColor: Colors.cardBorder,
+              }}
+            />
+            <Text
+              style={{
+                color: Colors.textTertiary,
+                fontSize: 13,
+              }}
+            >
+              {'\u05D0\u05D5'}
+            </Text>
+            <View
+              style={{
+                flex: 1,
+                height: 0.5,
+                backgroundColor: Colors.cardBorder,
+              }}
+            />
+          </View>
+
+          {/* Email Form */}
           <View style={{ gap: Spacing.xl }}>
             <GoldInput
               placeholder={'\u05D3\u05D5\u05D0\u05F4\u05DC'}
@@ -213,9 +342,10 @@ export default function LoginScreen() {
               title={'\u05D4\u05EA\u05D7\u05D1\u05E8'}
               onPress={handleLogin}
               loading={isLoading}
+              disabled={anyLoading}
             />
 
-            {/* Divider */}
+            {/* Signup section */}
             <View
               style={{
                 flexDirection: 'row',
@@ -237,7 +367,7 @@ export default function LoginScreen() {
                   fontSize: 13,
                 }}
               >
-                {'\u05D0\u05D5'}
+                {'\u05D0\u05D9\u05DF \u05DC\u05DA \u05D7\u05E9\u05D1\u05D5\u05DF?'}
               </Text>
               <View
                 style={{
@@ -253,6 +383,7 @@ export default function LoginScreen() {
               title={'\u05E6\u05D5\u05E8 \u05D7\u05E9\u05D1\u05D5\u05DF \u05D7\u05D3\u05E9'}
               variant="outline"
               onPress={() => router.push('/(auth)/signup' as any)}
+              disabled={anyLoading}
             />
 
             {/* Info text */}
@@ -267,38 +398,6 @@ export default function LoginScreen() {
             >
               {'\u05D4\u05EA\u05D7\u05D1\u05E8 \u05E2\u05DD \u05D0\u05D5\u05EA\u05DD \u05E4\u05E8\u05D8\u05D9\u05DD \u05E9\u05E0\u05E8\u05E9\u05DE\u05EA \u05D1-dils.co.il'}
             </Text>
-
-            {__DEV__ && (
-              <TouchableOpacity
-                onPress={async () => {
-                  const testEmail = 'test@tekunapay.co.il';
-                  const testPass = 'Test1234!';
-                  await supabase.auth.signUp({
-                    email: testEmail,
-                    password: testPass,
-                    options: {
-                      data: { full_name: '\u05DE\u05E9\u05EA\u05DE\u05E9 \u05D1\u05D3\u05D9\u05E7\u05D4' },
-                    },
-                  });
-                  const { error } = await supabase.auth.signInWithPassword({
-                    email: testEmail,
-                    password: testPass,
-                  });
-                  if (error) setLocalError(error.message);
-                }}
-                style={{ marginTop: 4, padding: 8 }}
-              >
-                <Text
-                  style={{
-                    color: '#666',
-                    textAlign: 'center',
-                    fontSize: 12,
-                  }}
-                >
-                  {'\uD83E\uDDEA \u05DB\u05E0\u05D9\u05E1\u05EA \u05D1\u05D3\u05D9\u05E7\u05D4 (DEV)'}
-                </Text>
-              </TouchableOpacity>
-            )}
           </View>
         </Animated.View>
       </ScrollView>
