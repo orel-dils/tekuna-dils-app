@@ -104,6 +104,19 @@ export default function LoginScreen() {
             <TekunaLogo width={240} />
           </View>
 
+          {/* Title */}
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: '700',
+              color: Colors.gold,
+              textAlign: 'right',
+              writingDirection: 'rtl',
+            }}
+          >
+            {'\u05D4\u05EA\u05D7\u05D1\u05E8\u05D5\u05EA'}
+          </Text>
+
           {/* Form */}
           <View style={{ gap: Spacing.xl }}>
             <GoldInput
@@ -119,17 +132,39 @@ export default function LoginScreen() {
               textContentType="emailAddress"
             />
 
-            <GoldInput
-              placeholder={'\u05E1\u05D9\u05E1\u05DE\u05D4'}
-              value={password}
-              onChangeText={(text) => {
-                setPassword(text);
-                setLocalError('');
-              }}
-              isPassword
-              autoComplete="password"
-              textContentType="password"
-            />
+            <View style={{ gap: Spacing.sm }}>
+              <GoldInput
+                placeholder={'\u05E1\u05D9\u05E1\u05DE\u05D0'}
+                value={password}
+                onChangeText={(text) => {
+                  setPassword(text);
+                  setLocalError('');
+                }}
+                isPassword
+                autoComplete="password"
+                textContentType="password"
+              />
+
+              {/* Forgot password link */}
+              <Pressable
+                onPress={() =>
+                  router.push('/(auth)/forgot-password' as any)
+                }
+                hitSlop={8}
+              >
+                <Text
+                  style={{
+                    color: Colors.gold,
+                    fontSize: 13,
+                    fontWeight: '600',
+                    textAlign: 'right',
+                    writingDirection: 'rtl',
+                  }}
+                >
+                  {'\u05E9\u05DB\u05D7\u05EA \u05D0\u05EA \u05D4\u05E1\u05D9\u05E1\u05DE\u05D0?'}
+                </Text>
+              </Pressable>
+            </View>
 
             {localError ? (
               <Text
@@ -151,51 +186,78 @@ export default function LoginScreen() {
               loading={isLoading}
             />
 
-            <Pressable
-              onPress={() => router.push('/(auth)/signup' as any)}
-              hitSlop={12}
+            {/* Divider */}
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: Spacing.md,
+                paddingVertical: Spacing.sm,
+              }}
             >
+              <View
+                style={{
+                  flex: 1,
+                  height: 0.5,
+                  backgroundColor: Colors.cardBorder,
+                }}
+              />
               <Text
                 style={{
-                  color: Colors.textSecondary,
-                  fontSize: 14,
-                  textAlign: 'right',
-                  writingDirection: 'rtl',
+                  color: Colors.textTertiary,
+                  fontSize: 13,
                 }}
               >
-                {'\u05D0\u05D9\u05DF \u05DC\u05DA \u05D7\u05E9\u05D1\u05D5\u05DF? \u05D4\u05D9\u05E8\u05E9\u05DD \u05E2\u05DB\u05E9\u05D9\u05D5'}
+                {'\u05D0\u05D5'}
               </Text>
-            </Pressable>
+              <View
+                style={{
+                  flex: 1,
+                  height: 0.5,
+                  backgroundColor: Colors.cardBorder,
+                }}
+              />
+            </View>
+
+            {/* Signup link */}
+            <GoldButton
+              title={'\u05E6\u05D5\u05E8 \u05D7\u05E9\u05D1\u05D5\u05DF \u05D7\u05D3\u05E9'}
+              variant="outline"
+              onPress={() => router.push('/(auth)/signup' as any)}
+            />
+
+            {/* Info text */}
+            <Text
+              style={{
+                color: Colors.textTertiary,
+                fontSize: 12,
+                textAlign: 'center',
+                writingDirection: 'rtl',
+                lineHeight: 18,
+              }}
+            >
+              {'\u05D4\u05EA\u05D7\u05D1\u05E8 \u05E2\u05DD \u05D0\u05D5\u05EA\u05DD \u05E4\u05E8\u05D8\u05D9\u05DD \u05E9\u05E0\u05E8\u05E9\u05DE\u05EA \u05D1-dils.co.il'}
+            </Text>
 
             {__DEV__ && (
               <TouchableOpacity
                 onPress={async () => {
                   const testEmail = 'test@tekunapay.co.il';
                   const testPass = 'Test1234!';
-
-                  // Try signup first (no-op if already exists)
                   await supabase.auth.signUp({
                     email: testEmail,
                     password: testPass,
                     options: {
-                      data: {
-                        full_name: '\u05DE\u05E9\u05EA\u05DE\u05E9 \u05D1\u05D3\u05D9\u05E7\u05D4',
-                      },
+                      data: { full_name: '\u05DE\u05E9\u05EA\u05DE\u05E9 \u05D1\u05D3\u05D9\u05E7\u05D4' },
                     },
                   });
-
-                  // Then login
                   const { error } = await supabase.auth.signInWithPassword({
                     email: testEmail,
                     password: testPass,
                   });
-
                   if (error) setLocalError(error.message);
                 }}
-                style={{
-                  marginTop: 12,
-                  padding: 8,
-                }}
+                style={{ marginTop: 4, padding: 8 }}
               >
                 <Text
                   style={{
@@ -204,7 +266,7 @@ export default function LoginScreen() {
                     fontSize: 12,
                   }}
                 >
-                  {'\uD83E\uDDEA \u05DB\u05E0\u05D9\u05E1\u05EA \u05D1\u05D3\u05D9\u05E7\u05D4 (DEV \u05D1\u05DC\u05D1\u05D3)'}
+                  {'\uD83E\uDDEA \u05DB\u05E0\u05D9\u05E1\u05EA \u05D1\u05D3\u05D9\u05E7\u05D4 (DEV)'}
                 </Text>
               </TouchableOpacity>
             )}

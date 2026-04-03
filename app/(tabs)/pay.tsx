@@ -557,35 +557,54 @@ export default function PayScreen() {
             lineHeight: 22,
           }}
         >
-          {'\u05D4\u05E6\u05D2 \u05DC\u05E7\u05D5\u05E4\u05D0\u05D9 \u05D0\u05EA \u05D4\u05E7\u05D5\u05D3 \u05DC\u05D4\u05E9\u05DC\u05DE\u05EA \u05D4\u05EA\u05E9\u05DC\u05D5\u05DD'}
+          {'\u05D4\u05E6\u05D2 \u05DC\u05E7\u05D5\u05E4\u05D0\u05D9 \u05D0\u05EA \u05D4\u05E7\u05D5\u05D3\n\u05D4\u05E7\u05D5\u05E4\u05D0\u05D9 \u05D9\u05D6\u05D9\u05DF \u05D0\u05D5\u05EA\u05D5 \u05D1\u05DE\u05E2\u05E8\u05DB\u05EA \u05D5\u05D4\u05EA\u05E9\u05DC\u05D5\u05DD \u05D9\u05EA\u05D1\u05E6\u05E2'}
         </Text>
 
-        {/* Countdown circle */}
+        {/* PIN digit boxes */}
         <Animated.View
           style={{
-            width: 200,
-            height: 200,
-            borderRadius: 100,
-            borderWidth: 6,
-            borderColor: secondsLeft > 30 ? Colors.gold : Colors.error,
             alignItems: 'center',
-            justifyContent: 'center',
+            gap: Spacing.lg,
             transform: [{ scale: pinScale }],
-            boxShadow: `0 0 40px ${secondsLeft > 30 ? 'rgba(197,160,40,0.3)' : 'rgba(255,59,48,0.3)'}`,
           }}
         >
-          <Text
-            selectable
+          <View
             style={{
-              fontSize: 52,
-              fontWeight: '900',
-              color: Colors.white,
-              fontVariant: ['tabular-nums'],
-              letterSpacing: 8,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              gap: Spacing.md,
             }}
           >
-            {pin}
-          </Text>
+            {pin.split('').map((digit, i) => (
+              <View
+                key={i}
+                style={{
+                  width: 64,
+                  height: 80,
+                  borderRadius: Radius.lg,
+                  borderCurve: 'continuous',
+                  borderWidth: 3,
+                  borderColor: secondsLeft > 30 ? Colors.gold : Colors.error,
+                  backgroundColor: 'rgba(197,160,40,0.08)',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: `0 0 20px ${secondsLeft > 30 ? 'rgba(197,160,40,0.2)' : 'rgba(255,59,48,0.2)'}`,
+                }}
+              >
+                <Text
+                  selectable
+                  style={{
+                    fontSize: 36,
+                    fontWeight: '900',
+                    color: Colors.white,
+                    fontVariant: ['tabular-nums'],
+                  }}
+                >
+                  {digit}
+                </Text>
+              </View>
+            ))}
+          </View>
         </Animated.View>
 
         {/* Timer */}
