@@ -116,7 +116,7 @@ export default function SendScreen() {
   }
 
   const handleSendAll = () => {
-    if (wallet) setAmount(wallet.balance.toString());
+    if (wallet) setAmount((wallet.balance ?? 0).toString());
   };
 
   // Validate shared fields
@@ -126,7 +126,7 @@ export default function SendScreen() {
       setError('\u05E0\u05D0 \u05DC\u05D4\u05D6\u05D9\u05DF \u05E1\u05DB\u05D5\u05DD \u05EA\u05E7\u05D9\u05DF');
       return null;
     }
-    if (wallet && numAmount > wallet.balance) {
+    if (wallet && numAmount > (wallet.balance ?? 0)) {
       setError('\u05D9\u05EA\u05E8\u05D4 \u05DC\u05D0 \u05DE\u05E1\u05E4\u05D9\u05E7\u05D4');
       return null;
     }
@@ -157,7 +157,7 @@ export default function SendScreen() {
       setSending(true);
 
       const res = await fetch(
-        'https://vwpnhzqsafonargpdbsr.supabase.co/functions/v1/partner-settlement-api/validate-pin',
+        `${process.env.EXPO_PUBLIC_SUPABASE_URL}/functions/v1/partner-settlement-api/validate-pin`,
         {
           method: 'POST',
           headers: {
@@ -169,7 +169,7 @@ export default function SendScreen() {
           body: JSON.stringify({
             pin_code: cleaned,
             amount_minor: Math.round(numAmount * 100),
-            merchant_wallet: wallet!.address,
+            merchant_wallet: wallet?.address ?? '',
             description: '\u05EA\u05E9\u05DC\u05D5\u05DD \u05D1\u05D1\u05D9\u05EA \u05E2\u05E1\u05E7',
           }),
         }
@@ -221,7 +221,7 @@ export default function SendScreen() {
       return;
     }
 
-    if (wallet && toAddress.trim() === wallet.address) {
+    if (wallet?.address && toAddress.trim() === wallet.address) {
       setError('\u05DC\u05D0 \u05E0\u05D9\u05EA\u05DF \u05DC\u05E9\u05DC\u05D5\u05D7 \u05DC\u05E2\u05E6\u05DE\u05DA');
       return;
     }
@@ -238,7 +238,7 @@ export default function SendScreen() {
       setSending(true);
 
       const res = await fetch(
-        'https://vwpnhzqsafonargpdbsr.supabase.co/functions/v1/partner-settlement-api/validate-pin',
+        `${process.env.EXPO_PUBLIC_SUPABASE_URL}/functions/v1/partner-settlement-api/validate-pin`,
         {
           method: 'POST',
           headers: {
@@ -250,7 +250,7 @@ export default function SendScreen() {
           body: JSON.stringify({
             pin_code: toAddress.trim(),
             amount_minor: Math.round(numAmount * 100),
-            merchant_wallet: wallet!.address,
+            merchant_wallet: wallet?.address ?? '',
             description: '\u05D4\u05E2\u05D1\u05E8\u05D4 \u05DE\u05D0\u05E4\u05DC\u05D9\u05E7\u05E6\u05D9\u05D4',
           }),
         }
@@ -747,7 +747,7 @@ export default function SendScreen() {
                 }}
               >
                 {'\u20AA'}
-                {formatBalance(wallet.balance)}
+                {formatBalance(Number(wallet.balance ?? 0))}
               </Text>
             </View>
           )}

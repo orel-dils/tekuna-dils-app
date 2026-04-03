@@ -83,13 +83,24 @@ export default function ClubsScreen() {
           .order('name'),
       ]);
 
-      if (myRes.error) throw myRes.error;
-      if (allRes.error) throw allRes.error;
+      // Handle table-not-found errors gracefully (42P01 or relation does not exist)
+      const isTableMissing = (err: any) =>
+        err?.code === '42P01' || err?.message?.includes('relation') && err?.message?.includes('does not exist');
 
-      setMyClubs((myRes.data as any) || []);
-      setAllClubs(allRes.data || []);
+      if (myRes.error && !isTableMissing(myRes.error)) throw myRes.error;
+      if (allRes.error && !isTableMissing(allRes.error)) throw allRes.error;
+
+      setMyClubs(myRes.error ? [] : ((myRes.data as any) || []));
+      setAllClubs(allRes.error ? [] : (allRes.data || []));
     } catch (err: any) {
-      setError(err.message || '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D8\u05E2\u05D9\u05E0\u05EA \u05DE\u05D5\u05E2\u05D3\u05D5\u05E0\u05D9\u05DD');
+      // If the error is about missing tables, show empty state instead of error
+      const msg = err.message || '';
+      if (err.code === '42P01' || (msg.includes('relation') && msg.includes('does not exist'))) {
+        setMyClubs([]);
+        setAllClubs([]);
+      } else {
+        setError(msg || '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D8\u05E2\u05D9\u05E0\u05EA \u05DE\u05D5\u05E2\u05D3\u05D5\u05E0\u05D9\u05DD');
+      }
     } finally {
       setLoading(false);
     }

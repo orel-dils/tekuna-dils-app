@@ -46,14 +46,14 @@ export default function ReceiveScreen() {
   }
 
   const handleCopy = async () => {
-    await Clipboard.setStringAsync(wallet.address);
+    await Clipboard.setStringAsync(wallet.address!);
     Alert.alert('\u05D4\u05D5\u05E2\u05EA\u05E7', '\u05DB\u05EA\u05D5\u05D1\u05EA \u05D4\u05D0\u05E8\u05E0\u05E7 \u05D4\u05D5\u05E2\u05EA\u05E7\u05D4');
   };
 
   const handleShare = async () => {
     try {
       await Share.share({
-        message: `\u05DB\u05EA\u05D5\u05D1\u05EA \u05D4\u05D0\u05E8\u05E0\u05E7 \u05E9\u05DC\u05D9 \u05D1-DILS: ${wallet.address}`,
+        message: `\u05DB\u05EA\u05D5\u05D1\u05EA \u05D4\u05D0\u05E8\u05E0\u05E7 \u05E9\u05DC\u05D9 \u05D1-DILS: ${wallet.address!}`,
       });
     } catch {
       // User cancelled
@@ -106,7 +106,7 @@ export default function ReceiveScreen() {
             boxShadow: '0 0 40px rgba(197,160,40,0.2)',
           }}
         >
-          <QRCodeDisplay value={wallet.address} size={220} />
+          <QRCodeDisplay value={wallet.address!} size={220} />
         </Animated.View>
 
         {/* Address Section */}
@@ -131,7 +131,7 @@ export default function ReceiveScreen() {
               lineHeight: 22,
             }}
           >
-            {wallet.address}
+            {wallet.address!}
           </Text>
         </View>
 

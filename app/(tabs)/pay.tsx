@@ -217,7 +217,7 @@ export default function PayScreen() {
       return;
     }
 
-    if (wallet && numAmount > Number(wallet.balance)) {
+    if (wallet && numAmount > Number(wallet.balance ?? 0)) {
       setError('\u05D9\u05EA\u05E8\u05D4 \u05DC\u05D0 \u05DE\u05E1\u05E4\u05D9\u05E7\u05D4');
       return;
     }
@@ -296,7 +296,7 @@ export default function PayScreen() {
     return <LoadingScreen message={'\u05D8\u05D5\u05E2\u05DF...'} />;
   }
 
-  if (walletError) {
+  if (walletError && !wallet) {
     return <ErrorState message={walletError} onRetry={refetch} />;
   }
 
@@ -760,7 +760,7 @@ export default function PayScreen() {
                 fontVariant: ['tabular-nums'],
               }}
             >
-              {'\u05D9\u05EA\u05E8\u05D4: \u20AA'}{formatBalance(Number(wallet.balance))}
+              {'\u05D9\u05EA\u05E8\u05D4: \u20AA'}{formatBalance(Number(wallet.balance ?? 0))}
             </Text>
           )}
         </View>

@@ -46,7 +46,14 @@ export function useTransactions(walletAddress: string | undefined) {
       }
 
       const { data, error: fetchError } = await query;
-      if (fetchError) throw fetchError;
+      if (fetchError) {
+        // 42P01 = table does not exist — treat as empty
+        if (fetchError.code === '42P01') {
+          setTransactions([]);
+          return;
+        }
+        throw fetchError;
+      }
       setTransactions(data || []);
     } catch (err: any) {
       setError(err.message || 'Failed to fetch transactions');

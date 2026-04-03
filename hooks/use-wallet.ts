@@ -4,11 +4,13 @@ import { useAuth } from '@fastshot/auth';
 
 export interface Wallet {
   id: string;
-  user_id: string;
-  address: string;
+  entity_id?: string;
+  user_id?: string;
+  address?: string;
   balance: number;
   locked_balance: number;
   created_at: string;
+  [key: string]: any;
 }
 
 export function useWallet() {
@@ -32,10 +34,18 @@ export function useWallet() {
         .from('wallets_v3')
         .select('*')
         .eq('entity_id', user.id)
-        .single();
+        .maybeSingle();
 
-      if (fetchError) throw fetchError;
-      setWallet(data);
+      if (fetchError) {
+        // PGRST116 = no rows found — not a real error
+        if (fetchError.code === 'PGRST116') {
+          setWallet(null);
+        } else {
+          throw fetchError;
+        }
+      } else {
+        setWallet(data);
+      }
     } catch (err: any) {
       setError(err.message || 'Failed to fetch wallet');
     } finally {
@@ -49,7 +59,7 @@ export function useWallet() {
 
   // Real-time subscription for balance updates
   useEffect(() => {
-    if (!wallet) return;
+    if (!wallet?.id) return;
 
     const channel = supabase
       .channel('wallet-changes')

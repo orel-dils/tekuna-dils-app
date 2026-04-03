@@ -40,16 +40,23 @@ export function useContacts() {
         }))
         .filter((c) => c.phone_number.length > 0);
 
-      // Sync to DB in background
+      // Sync to DB in background (silently fail if table doesn't exist)
       if (formatted.length > 0) {
-        supabase
-          .from('contact_book')
-          .upsert(formatted, {
-            onConflict: 'owner_user_id,phone_number',
-            ignoreDuplicates: true,
-          })
+        Promise.resolve(
+          supabase
+            .from('contact_book')
+            .upsert(formatted, {
+              onConflict: 'owner_user_id,phone_number',
+              ignoreDuplicates: true,
+            })
+        )
           .then(({ error }) => {
-            if (error) console.log('Contact sync error:', error.message);
+            if (error && error.code !== '42P01') {
+              console.log('Contact sync error:', error.message);
+            }
+          })
+          .catch(() => {
+            // Silently ignore sync errors
           });
       }
 

@@ -1,4 +1,5 @@
 export function formatBalance(amount: number): string {
+  if (amount === null || amount === undefined || isNaN(amount)) return '0.00';
   return new Intl.NumberFormat('he-IL', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,

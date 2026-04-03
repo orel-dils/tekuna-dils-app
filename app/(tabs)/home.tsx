@@ -10,7 +10,6 @@ import { useTransactions } from '@/hooks/use-transactions';
 import { truncateAddress } from '@/lib/format';
 import { TransactionItem } from '@/components/transaction-item';
 import { LoadingScreen } from '@/components/loading-screen';
-import { ErrorState } from '@/components/error-state';
 import { GoldButton } from '@/components/gold-button';
 
 export default function HomeScreen() {
@@ -50,8 +49,16 @@ export default function HomeScreen() {
     return <LoadingScreen message={'\u05D8\u05D5\u05E2\u05DF \u05D0\u05E8\u05E0\u05E7...'} />;
   }
 
-  if (walletError) {
-    return <ErrorState message={walletError} onRetry={refetchWallet} />;
+  if (walletError && !wallet) {
+    return (
+      <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', alignItems: 'center', padding: Spacing.xl }}>
+        <Text style={{ fontSize: 32, opacity: 0.3, marginBottom: Spacing.md }}>{'\uD83D\uDCB0'}</Text>
+        <Text style={{ color: Colors.textSecondary, fontSize: 16, textAlign: 'center', writingDirection: 'rtl', marginBottom: Spacing.lg }}>
+          {'\u05D4\u05D0\u05E8\u05E0\u05E7 \u05E9\u05DC\u05DA \u05E2\u05D3\u05D9\u05D9\u05DF \u05DC\u05D0 \u05DE\u05D5\u05DB\u05DF'}
+        </Text>
+        <GoldButton title={'\u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1'} onPress={refetchWallet} />
+      </View>
+    );
   }
 
   const displayName = user?.email?.split('@')[0] || '\u05DE\u05E9\u05EA\u05DE\u05E9';
@@ -204,7 +211,7 @@ export default function HomeScreen() {
         </Text>
 
         {/* Locked balance */}
-        {wallet && wallet.locked_balance > 0 && (
+        {wallet && (wallet.locked_balance ?? 0) > 0 && (
           <Text
             style={{
               color: Colors.textTertiary,
@@ -215,7 +222,7 @@ export default function HomeScreen() {
               fontVariant: ['tabular-nums'],
             }}
           >
-            {'\u05DE\u05D5\u05E7\u05E4\u05D0: \u20AA'}{wallet.locked_balance.toFixed(2)}
+            {'\u05DE\u05D5\u05E7\u05E4\u05D0: \u20AA'}{(wallet.locked_balance ?? 0).toFixed(2)}
           </Text>
         )}
 
@@ -235,7 +242,7 @@ export default function HomeScreen() {
               fontFamily: 'monospace',
             }}
           >
-            {wallet ? truncateAddress(wallet.address) : '---'}
+            {wallet?.address ? truncateAddress(wallet.address) : '---'}
           </Text>
         </View>
       </Animated.View>
