@@ -105,12 +105,15 @@ export default function RootLayout() {
 
     const inAuthGroup = segments[0] === '(auth)';
     const inCallbackRoute = segments[0] === 'auth';
+    const inTabsGroup = segments[0] === '(tabs)';
 
     if (inCallbackRoute) return; // Don't redirect during OAuth callback
 
     if (!session && !inAuthGroup) {
+      // Not logged in and not on auth screen → go to login
       router.replace('/(auth)/login' as any);
-    } else if (session && inAuthGroup) {
+    } else if (session && !inTabsGroup && segments[0] !== 'transaction') {
+      // Logged in but stuck on splash/auth → go to home
       router.replace('/(tabs)/home' as any);
     }
   }, [session, loading, segments, router]);
